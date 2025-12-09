@@ -6,23 +6,22 @@
     <title>Aktivismus | AI-Driven Global Marketing</title>
     <link href="https://g.alicdn.com/alifd/global-font/latest/AlibabaPuHuiTi.css" rel="stylesheet">
     <style>
-        /* === Global Variables (颜色已根据您的要求调整) === */
+        /* === Global Variables === */
         :root {
-            --bg-color: #131313; /* 统一黑色背景色为 #131313 */
-            --card-bg: #1A1A1A; /* 卡片背景色略深，保持层次感 */
+            --bg-color: #131313;
+            --card-bg: #1A1A1A;
             --text-main: #FFFFFF;
             --text-secondary: #B0B0B0;
-            --accent-color: #00EEFF; /* 主青色强调色为 #00EEFF */
-            --accent-hover: #00C0D0; /* 调整后的鼠标悬停色 */
-            --gradient-bg: linear-gradient(135deg, #131313 0%, #000000 100%); /* 渐变起始色调整 */
+            --accent-color: #00EEFF;
+            --accent-hover: #00C0D0;
+            --gradient-bg: linear-gradient(135deg, #131313 0%, #000000 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* 阿里巴巴普惠体 3.0 或 Inter 作为备用 */
             font-family: 'Alibaba PuHuiTi 3.0', 'Inter', sans-serif; 
-            background-color: var(--bg-color); /* 应用 #131313 */
+            background-color: var(--bg-color); 
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
@@ -36,9 +35,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            /* 调整 Header 上下内边距为 25px，增加整体导航栏高度 */
             padding: 25px 5%; 
-            /* 调整为 #131313 的 rgba 值 */
             background: rgba(19, 19, 19, 0.95); 
             backdrop-filter: blur(10px);
             position: fixed;
@@ -48,35 +45,57 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* 针对 SVG Logo 的样式调整 */
-        .logo-link {
-            /* Logo 高度增加到 40px，与调整后的 Header 高度匹配 */
-            height: 40px; 
-            display: flex;
-            align-items: center;
-        }
-        .logo-svg {
-            height: 100%;
-            width: auto;
-        }
+        .logo-link { height: 40px; display: flex; align-items: center; }
+        .logo-svg { height: 100%; width: auto; }
+        .logo-svg path:nth-child(1) { fill: var(--text-main) !important; }
+        .logo-svg path:nth-child(2) { fill: var(--accent-color) !important; }
 
-        /* 覆盖 SVG 中默认的填充颜色，统一使用 CSS 变量 */
-        .logo-svg path:nth-child(1) {
-             /* AKTIVISMUS text: 保持白色 */
-            fill: var(--text-main) !important;
-        }
-        .logo-svg path:nth-child(2) {
-             /* Accent dot: 使用强调色 #00EEFF */
-            fill: var(--accent-color) !important; 
-        }
-
-        /* --- 其他样式保持不变 --- */
         .nav-group { display: flex; align-items: center; gap: 30px; }
         
+        /* 桌面端主菜单 */
         nav ul { display: flex; gap: 25px; }
         nav a { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); }
         nav a:hover, nav a.active { color: var(--text-main); }
 
+        /* === 下拉菜单样式 === */
+        nav ul li {
+            position: relative;
+            padding: 0 5px; 
+        }
+        
+        .submenu {
+            display: none; 
+            position: absolute;
+            top: 100%; 
+            left: -15px; 
+            min-width: 220px;
+            background-color: var(--card-bg); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: none;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            padding: 10px 0;
+            z-index: 1010;
+        }
+
+        .submenu li { padding: 0; }
+        .submenu a {
+            display: block; 
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 400; 
+            color: var(--text-secondary);
+            white-space: nowrap; 
+        }
+        .submenu a:hover {
+            color: var(--accent-color);
+            background-color: rgba(0, 238, 255, 0.05);
+        }
+        
+        /* 鼠标悬停时显示子菜单 */
+        nav ul li:hover > .submenu {
+            display: block;
+        }
+        
         /* Language Switcher */
         .lang-switch {
             display: flex;
@@ -101,12 +120,44 @@
         .cta-btn-small:hover {
             background: var(--accent-color);
             color: #000;
-            box-shadow: 0 0 15px rgba(0, 238, 255, 0.4); /* 使用新强调色 */
+            box-shadow: 0 0 15px rgba(0, 238, 255, 0.4);
         }
 
-        /* === Hero Section === */
+        /* === 汉堡菜单按钮样式 (默认隐藏) === */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            z-index: 1100;
+            border: none;
+            background: none;
+            margin-left: 20px;
+        }
+        .menu-toggle span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background: var(--text-main);
+            margin-bottom: 6px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        /* 汉堡菜单关闭图标动画 */
+        .menu-toggle.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* === Hero Section (已修复顶部间距) === */
         .hero {
-            /* 修正顶部内边距以适应更大的 Header 高度 */
+            /* 确保足够的顶部内边距来清除固定的 Header */
             padding: 130px 5% 0; 
             min-height: 100vh;
             display: flex;
@@ -114,7 +165,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: var(--gradient-bg); /* 使用调整后的渐变 */
+            background: var(--gradient-bg); 
             position: relative;
         }
 
@@ -186,23 +237,20 @@
         }
         .cta-btn-main:hover {
             transform: translateY(-3px);
-            box-shadow: 0 0 40px rgba(0, 238, 255, 0.4); /* 使用新强调色 */
+            box-shadow: 0 0 40px rgba(0, 238, 255, 0.4);
         }
 
-        /* === Sections === */
+        /* === Sections, Cards, Case Studies, About Us, Footer 样式保持不变... === */
         .section { padding: 100px 5%; }
-        .bg-darker { background: var(--bg-color); } /* 调整为 #131313 */
-
+        .bg-darker { background: var(--bg-color); }
         .section-header { margin-bottom: 60px; text-align: center; }
         .section-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 15px; }
         .section-subtitle { color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
-
         .grid-4 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 30px;
         }
-
         .card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -223,8 +271,6 @@
         }
         .card h3 { font-size: 1.4rem; margin-bottom: 15px; }
         .card p { color: var(--text-secondary); font-size: 0.95rem; }
-
-        /* === Showcase/Case Study Optimization (已优化结构) === */
         .showcase-grid {
             display: grid;
             grid-template-columns: 1fr; 
@@ -232,7 +278,6 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .case-study {
             display: flex;
             background: var(--card-bg); 
@@ -243,7 +288,6 @@
         }
         .case-visual {
             flex: 1;
-            /* 保持微小的渐变对比 */
             background: linear-gradient(45deg, #131313, #1A1A1A); 
             display: flex;
             align-items: center;
@@ -265,8 +309,6 @@
         .stat-row { display: flex; gap: 40px; margin-top: 30px; }
         .stat-item strong { display: block; font-size: 2.5rem; color: var(--accent-color); font-weight: 800; }
         .stat-item span { font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
-
-        /* === About Us Section === */
         .about-us-container {
             display: flex;
             align-items: flex-start;
@@ -278,14 +320,14 @@
         .about-visual { 
             flex: 1; 
             min-height: 300px;
-            background: var(--card-bg); /* 使用卡片色作为视觉框背景 */
+            background: var(--card-bg);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
             color: var(--accent-color);
-            border: 2px dashed rgba(0, 238, 255, 0.3); /* 使用新强调色 */
+            border: 2px dashed rgba(0, 238, 255, 0.3);
             text-align: center;
             padding: 20px;
         }
@@ -294,16 +336,12 @@
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
-        /* 邮箱域名已根据要求使用 aktivismus.com */
         .contact-info p { margin-bottom: 10px; font-weight: 500; }
         .contact-info a { color: var(--accent-color); }
-
-
-        /* === Footer === */
         footer {
             padding: 60px 5%;
             border-top: 1px solid rgba(255,255,255,0.05);
-            background: #131313; /* 确保页脚也是 #131313 */
+            background: #131313;
             color: var(--text-secondary);
             font-size: 0.9rem;
             display: flex;
@@ -312,16 +350,74 @@
             gap: 20px;
         }
 
-        /* === Mobile === */
+
+        /* === Media Query 移动端适配 === */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            .nav-group nav { display: none; } 
             .case-study { flex-direction: column; }
             .case-visual { height: 200px; }
             .stat-row { flex-direction: column; gap: 20px; }
-            .lang-switch { display: none; } 
             .about-us-container { flex-direction: column; }
             .about-visual { width: 100%; }
+            
+            /* 1. 窄屏时显示汉堡菜单按钮，隐藏 CTA, 导航, 语言切换 */
+            .menu-toggle {
+                display: block; 
+            }
+            
+            .lang-switch, .cta-btn-small {
+                display: none; 
+            }
+
+            /* 2. 窄屏时导航栏样式调整为全屏抽屉 */
+            nav {
+                display: none; 
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--bg-color); 
+                padding-top: 100px;
+                z-index: 999;
+                overflow-y: auto;
+            }
+            
+            nav.open {
+                display: block; 
+            }
+
+            nav ul {
+                flex-direction: column; 
+                text-align: center;
+                gap: 0;
+            }
+
+            nav ul li {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            nav a, .submenu a {
+                padding: 15px 20px;
+                font-size: 1.2rem; 
+            }
+            
+            /* 3. 窄屏时下拉菜单处理 */
+            .submenu {
+                position: static; 
+                display: block !important; /* 强制显示子菜单 */
+                background-color: transparent;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                margin-top: 0;
+            }
+            
+            .submenu li a {
+                font-size: 1rem;
+                padding: 10px 20px 10px 40px; 
+                color: var(--text-secondary);
+            }
         }
     </style>
 </head>
@@ -335,22 +431,43 @@
             </svg>
         </a>
         <div class="nav-group">
-            <nav>
+            <nav id="main-nav">
                 <ul>
                     <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#showcase">Showcase</a></li>
+                    <li>
+                        <a href="#services">Services</a>
+                        <ul class="submenu">
+                            <li><a href="/ai-content-production">AI Content Production</a></li>
+                            <li><a href="/ai-distribution">AI Distribution & Management</a></li>
+                            <li><a href="/ugc-engineering">UGC Ecosystem Engineering</a></li>
+                            <li><a href="/growth-consulting">Growth Consulting & Tech Stack</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#showcase">Case Studies</a>
+                        <ul class="submenu">
+                            <li><a href="/case-studies/e-commerce">E-Commerce Retailer</a></li>
+                            <li><a href="/case-studies/fintech">FinTech Expansion</a></li>
+                            <li><a href="/case-studies/saas">B2B SaaS Onboarding</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#about">About</a></li>
                 </ul>
             </nav>
             
-            <div class="lang-switch">
-                <a href="#" class="current">EN</a>
+            <div class="lang-switch" id="lang-switch-group">
+                <a href="#" class="current" data-lang="en">EN</a>
                 <span>/</span>
-                <a href="#">CN</a>
+                <a href="#" data-lang="cn">CN</a>
             </div>
 
             <a href="#contact" class="cta-btn-small">Contact Us</a>
+            
+            <button class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
@@ -394,7 +511,7 @@
 
     <section class="section" id="showcase">
         <div class="section-header">
-            <h2 class="section-title">Showcase: Data-Driven Success</h2>
+            <h2 class="section-title">Case Studies: Data-Driven Success</h2>
             <p class="section-subtitle">See how Aktivismus helps market leaders overcome content bottlenecks and achieve break-through growth.</p>
         </div>
 
@@ -455,7 +572,59 @@
             <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a>
         </div>
     </footer>
-
     
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const langLinks = document.querySelectorAll('#lang-switch-group a');
+            const navLinks = mainNav.querySelectorAll('a');
+
+            // 1. 移动端菜单切换逻辑
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('open');
+                menuToggle.classList.toggle('open');
+                
+                // 确保在菜单打开时，body 不滚动
+                if (mainNav.classList.contains('open')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // 2. 点击导航链接后关闭菜单（仅限移动端）
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    // 检查是否是窄屏模式 (768px 是 CSS 中的断点)
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('open');
+                        menuToggle.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+
+            // 3. 语言切换逻辑
+            langLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // 阻止默认跳转
+
+                    const targetLang = link.getAttribute('data-lang');
+
+                    // 移除所有链接的 current 类，并添加到当前点击的链接
+                    langLinks.forEach(l => l.classList.remove('current'));
+                    link.classList.add('current');
+
+                    // 切换 HTML 标签的 lang 属性
+                    document.documentElement.lang = targetLang;
+
+                    // 可以在这里添加代码来加载/切换实际的中文/英文内容
+                    // console.log('Current language switched to:', targetLang);
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
