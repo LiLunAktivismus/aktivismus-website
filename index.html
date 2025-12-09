@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktivismus | AI-Driven Global Marketing</title>
+    <link href="https://g.alicdn.com/alifd/global-font/latest/AlibabaPuHuiTi.css" rel="stylesheet">
+    <style>
+        /* === Global Variables (颜色已根据您的要求调整) === */
+        :root {
+            --bg-color: #131313; /* 统一黑色背景色为 #131313 */
+            --card-bg: #1A1A1A; /* 卡片背景色略深，保持层次感 */
+            --text-main: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --accent-color: #00EEFF; /* 主青色强调色为 #00EEFF */
+            --accent-hover: #00C0D0; /* 调整后的鼠标悬停色 */
+            --gradient-bg: linear-gradient(135deg, #131313 0%, #000000 100%); /* 渐变起始色调整 */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            /* 阿里巴巴普惠体 3.0 或 Inter 作为备用 */
+            font-family: 'Alibaba PuHuiTi 3.0', 'Inter', sans-serif; 
+            background-color: var(--bg-color); /* 应用 #131313 */
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* === Header & Nav === */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* 调整 Header 上下内边距为 25px，增加整体导航栏高度 */
+            padding: 25px 5%; 
+            /* 调整为 #131313 的 rgba 值 */
+            background: rgba(19, 19, 19, 0.95); 
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* 针对 SVG Logo 的样式调整 */
+        .logo-link {
+            /* Logo 高度增加到 40px，与调整后的 Header 高度匹配 */
+            height: 40px; 
+            display: flex;
+            align-items: center;
+        }
+        .logo-svg {
+            height: 100%;
+            width: auto;
+        }
+
+        /* 覆盖 SVG 中默认的填充颜色，统一使用 CSS 变量 */
+        .logo-svg path:nth-child(1) {
+             /* AKTIVISMUS text: 保持白色 */
+            fill: var(--text-main) !important;
+        }
+        .logo-svg path:nth-child(2) {
+             /* Accent dot: 使用强调色 #00EEFF */
+            fill: var(--accent-color) !important; 
+        }
+
+        /* --- 其他样式保持不变 --- */
+        .nav-group { display: flex; align-items: center; gap: 30px; }
+        
+        nav ul { display: flex; gap: 25px; }
+        nav a { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); }
+        nav a:hover, nav a.active { color: var(--text-main); }
+
+        /* Language Switcher */
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+            font-size: 0.85rem;
+            border-left: 1px solid rgba(255,255,255,0.2);
+            padding-left: 20px;
+        }
+        .lang-switch a { color: var(--text-secondary); opacity: 0.6; }
+        .lang-switch a.current { color: var(--accent-color); opacity: 1; font-weight: bold; }
+        .lang-switch a:hover { opacity: 1; }
+
+        .cta-btn-small {
+            background: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-left: 20px;
+        }
+        .cta-btn-small:hover {
+            background: var(--accent-color);
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 238, 255, 0.4); /* 使用新强调色 */
+        }
+
+        /* === Hero Section === */
+        .hero {
+            /* 修正顶部内边距以适应更大的 Header 高度 */
+            padding: 130px 5% 0; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: var(--gradient-bg); /* 使用调整后的渐变 */
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--accent-color);
+            filter: blur(180px);
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-content { position: relative; z-index: 1; max-width: 1000px; }
+
+        .tagline {
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: transparent;
+            -webkit-text-stroke: 1px #fff; 
+        }
+        
+        .hero h1 .highlight {
+            background: linear-gradient(90deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 0;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-btn-main {
+            background: var(--accent-color);
+            color: #000;
+            padding: 16px 45px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .cta-btn-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px rgba(0, 238, 255, 0.4); /* 使用新强调色 */
+        }
+
+        /* === Sections === */
+        .section { padding: 100px 5%; }
+        .bg-darker { background: var(--bg-color); } /* 调整为 #131313 */
+
+        .section-header { margin-bottom: 60px; text-align: center; }
+        .section-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 15px; }
+        .section-subtitle { color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .card:hover {
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .card-num {
+            font-family: monospace;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+        .card h3 { font-size: 1.4rem; margin-bottom: 15px; }
+        .card p { color: var(--text-secondary); font-size: 0.95rem; }
+
+        /* === Showcase/Case Study Optimization (已优化结构) === */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr; 
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .case-study {
+            display: flex;
+            background: var(--card-bg); 
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            align-items: center;
+        }
+        .case-visual {
+            flex: 1;
+            /* 保持微小的渐变对比 */
+            background: linear-gradient(45deg, #131313, #1A1A1A); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 350px;
+            font-weight: 800;
+            color: #333;
+            font-size: 2rem;
+            position: relative;
+        }
+        .case-visual:after {
+            content: 'Client Visual / Data Dashboard Mockup';
+            position: absolute;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            opacity: 0.4;
+        }
+        .case-content { flex: 1; padding: 60px; }
+        .stat-row { display: flex; gap: 40px; margin-top: 30px; }
+        .stat-item strong { display: block; font-size: 2.5rem; color: var(--accent-color); font-weight: 800; }
+        .stat-item span { font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* === About Us Section === */
+        .about-us-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .about-text { flex: 2; }
+        .about-visual { 
+            flex: 1; 
+            min-height: 300px;
+            background: var(--card-bg); /* 使用卡片色作为视觉框背景 */
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            border: 2px dashed rgba(0, 238, 255, 0.3); /* 使用新强调色 */
+            text-align: center;
+            padding: 20px;
+        }
+        .contact-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        /* 邮箱域名已根据要求使用 aktivismus.com */
+        .contact-info p { margin-bottom: 10px; font-weight: 500; }
+        .contact-info a { color: var(--accent-color); }
+
+
+        /* === Footer === */
+        footer {
+            padding: 60px 5%;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background: #131313; /* 确保页脚也是 #131313 */
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* === Mobile === */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-group nav { display: none; } 
+            .case-study { flex-direction: column; }
+            .case-visual { height: 200px; }
+            .stat-row { flex-direction: column; gap: 20px; }
+            .lang-switch { display: none; } 
+            .about-us-container { flex-direction: column; }
+            .about-visual { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#hero" class="logo-link">
+            <svg class="logo-svg" viewBox="0 0 442 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M42.9189 75L41.0459 70.1501H26.5298L29.6069 61.3535H37.6343L25.7605 30.6155H40.1763L57.8699 75H42.9189ZM8.30103 75L24.155 32.6223L30.7107 50.249L22.583 75H8.30103ZM87.5469 51.128L102.907 75H87.7389L76.8589 56.568H75.1309V75H62.3949V30.584H75.1309V46.584H76.8589L87.6109 30.584H102.267L87.5469 51.128ZM137.557 30.584V41.72H126.933V75H114.261V41.72H103.701V30.584H137.557ZM143.02 75V30.584H155.756V75H143.02ZM176.175 75L160.687 30.584H174.895L184.239 61.432H184.623L194.479 30.584H207.919L191.983 75H176.175ZM212.832 75V30.584H225.568V75H212.832ZM245.988 75.64C241.06 75.64 236.324 74.936 233.188 74.168V63.224C236.132 64.056 241.316 64.888 245.284 64.888C250.596 64.888 251.3 63.992 251.3 61.24C251.3 59.384 250.468 58.296 244.9 56.952C235.172 54.712 232.868 51.64 232.868 43.768C232.868 33.272 239.652 29.944 250.276 29.944C255.844 29.944 259.3 30.712 261.796 31.544V41.72C259.94 41.016 254.372 40.184 250.852 40.184C246.756 40.184 245.156 41.144 245.156 43.256C245.156 45.304 246.116 45.752 251.62 47.16C262.692 50.04 264.036 53.56 264.036 61.624C264.036 70.456 259.748 75.64 245.988 75.64ZM271.582 75V30.584H292.382L296.734 52.856H297.118L302.046 30.584H322.078V75H309.598V42.808H309.214L302.878 67.896H290.462L284.318 42.808H283.934V75H271.582ZM350.296 75.64C337.816 75.64 330.328 72.44 330.328 59.96V30.584H343.064V59.064C343.064 61.944 344.152 64.76 350.296 64.76C356.632 64.76 357.656 61.432 357.656 59.064V30.584H370.328V59.96C370.328 71.288 362.776 75.64 350.296 75.64ZM390.613 75.64C385.685 75.64 380.949 74.936 377.813 74.168V63.224C380.757 64.056 385.941 64.888 389.909 64.888C395.221 64.888 395.925 63.992 395.925 61.24C395.925 59.384 395.093 58.296 389.525 56.952C379.797 54.712 377.493 51.64 377.493 43.768C377.493 33.272 384.277 29.944 394.901 29.944C400.469 29.944 403.925 30.712 406.421 31.544V41.72C404.565 41.016 398.997 40.184 395.477 40.184C391.381 40.184 389.781 41.144 389.781 43.256C389.781 45.304 390.741 45.752 396.245 47.16C407.317 50.04 408.661 53.56 408.661 61.624C408.661 70.456 404.373 75.64 390.613 75.64Z" fill="white"/>
+                <path d="M421.933 75.384C415.533 75.384 415.149 74.36 415.149 68.472C415.149 62.52 415.533 61.496 421.933 61.496C428.205 61.496 428.781 62.52 428.781 68.472C428.781 74.36 428.205 75.384 421.933 75.384Z" fill="#00EEFF"/>
+            </svg>
+        </a>
+        <div class="nav-group">
+            <nav>
+                <ul>
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#showcase">Showcase</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+            
+            <div class="lang-switch">
+                <a href="#" class="current">EN</a>
+                <span>/</span>
+                <a href="#">CN</a>
+            </div>
+
+            <a href="#contact" class="cta-btn-small">Contact Us</a>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <span class="tagline">AI-Driven Global Marketing Infrastructure</span>
+            <h1>Exponential Scale.<br><span class="highlight">Precision Reach.</span></h1>
+            <p>We empower enterprises to mass-produce, distribute, and optimize marketing content using proprietary AI systems. Low cost. Maximum impact.</p>
+            <button class="cta-btn-main">Ignite Your Growth</button>
+        </div>
+    </section>
+
+    <section class="section bg-darker" id="services">
+        <div class="section-header">
+            <h2 class="section-title">Our Capabilities</h2>
+            <p class="section-subtitle">Blending generative AI with strategic consulting to automate your brand's global presence.</p>
+        </div>
+        <div class="grid-4">
+            <div class="card">
+                <div class="card-num">/01</div>
+                <h3>AI Content Production</h3>
+                <p>High-fidelity production of text, visuals, and video at 10x speed using custom-trained models.</p>
+            </div>
+            <div class="card">
+                <div class="card-num">/02</div>
+                <h3>AI Distribution & Management</h3>
+                <p>Manage omnichannel publishing across global markets with a single centralized dashboard.</p>
+            </div>
+            <div class="card">
+                <div class="card-num">/03</div>
+                <h3>UGC Ecosystem Engineering</h3>
+                <p>AI-driven curation and incentivization of user-generated content to build authentic trust.</p>
+            </div>
+            <div class="card">
+                <div class="card-num">/04</div>
+                <h3>Growth Consulting & Tech Stack</h3>
+                <p>Quantifiable ROI analysis and complete tech stack implementation for C-level decision making.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="showcase">
+        <div class="section-header">
+            <h2 class="section-title">Showcase: Data-Driven Success</h2>
+            <p class="section-subtitle">See how Aktivismus helps market leaders overcome content bottlenecks and achieve break-through growth.</p>
+        </div>
+
+        <div class="showcase-grid">
+            <div class="case-study">
+                <div class="case-visual">
+                    </div>
+                <div class="case-content">
+                    <span class="tagline">Success Story / E-Commerce</span>
+                    <h2 class="section-title" style="font-size: 1.8rem;">Global Retailer Scaling</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 30px;">
+                        Leveraging the Aktivismus AI Matrix, we helped a Top 500 retailer restructure their content supply chain within 90 days.
+                    </p>
+                    <div class="stat-row">
+                        <div class="stat-item">
+                            <strong>300%</strong>
+                            <span>Output Efficiency</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>45%</strong>
+                            <span>CAC Reduction</span>
+                        </div>
+                    </div>
+                    <a href="#" class="cta-btn-small" style="margin-top: 30px; display: inline-block; margin-left: 0;">View Full Case Study →</a>
+                </div>
+            </div>
+            </div>
+    </section>
+
+    <section class="section bg-darker" id="about">
+        <div class="section-header">
+            <h2 class="section-title">About Aktivismus: Activating Future Marketing</h2>
+        </div>
+        <div class="about-us-container">
+            <div class="about-text">
+                <p style="color: var(--text-secondary); font-size: 1.05rem;">
+                    **Aktivismus** is a next-generation AI marketing technology firm. We address the core pain points of executives and entrepreneurs: **high content costs, difficult AI adoption, and non-quantifiable marketing ROI**. We are not just a tool provider; we are your **AI Marketing Architects**.
+                </p>
+                <p style="color: var(--text-secondary); font-size: 1.05rem; margin-top: 15px;">
+                    Our proprietary technology features a content engine that **self-learns and iterates**, generating dozens of brand-consistent content variants across diverse channels in a short time. This is a strategic upgrade, transforming content marketing from a cost center into a **profit engine**. We make marketing results predictable, controllable, and scalable.
+                </p>
+                <div class="contact-info" id="contact">
+                    <p>Connect with our Growth Experts today:</p>
+                    <p>Email: <a href="mailto:contact@aktivismus.com">contact@aktivismus.com</a></p> 
+                    <p>Phone: <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+                </div>
+            </div>
+            <div class="about-visual">
+                 
+                AI Content Engine | Real-time Workflow Visualization
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>&copy; 2025 Aktivismus Inc. All Rights Reserved.</div>
+        <div>
+            <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a>
+        </div>
+    </footer>
+
+</body>
+</html>
