@@ -7,7 +7,7 @@
 
     <link rel="icon" type="image/png" href="/assets/images/favicon_32*32.png"> 
     <link rel="shortcut icon" href="/assets/images/favicon_32*32.png">
-    
+
     <link href="https://g.alicdn.com/alifd/global-font/latest/AlibabaPuHuiTi.css" rel="stylesheet">
     <style>
         /* === Global Variables === */
@@ -207,16 +207,42 @@
             line-height: 1.1;
         }
 
-        .hero h1 span {
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            
+            /* === 新增：SaaS 级别流光特效 === */
+            background: linear-gradient(
+                90deg, 
+                #FFFFFF 0%, 
+                #FFFFFF 40%, 
+                var(--accent-color) 50%, 
+                #FFFFFF 60%, 
+                #FFFFFF 100%
+            );
+            background-size: 200% auto;
             color: transparent;
-            -webkit-text-stroke: 1px #fff; 
-        }
-        
-        .hero h1 .highlight {
-            background: linear-gradient(90deg, #fff, var(--accent-color));
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            -webkit-text-stroke: 0;
+            background-clip: text;
+            -webkit-text-fill-color: transparent; /* 确保渐变生效 */
+            
+            /* 动画与初始光晕 */
+            animation: ai-sweep 3s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(0, 238, 255, 0.2));
+            transition: filter 0.3s ease;
+        }
+
+        /* 鼠标悬停交互：加速流光，增强霓虹感 */
+        .hero h1:hover {
+            filter: drop-shadow(0 0 30px rgba(0, 238, 255, 0.6));
+            animation: ai-sweep 1.5s linear infinite;
+        }
+
+        /* 流光扫掠关键帧 */
+        @keyframes ai-sweep { 
+            to { background-position: 200% center; } 
         }
 
         .hero p {
@@ -307,7 +333,7 @@
             position: absolute;
             color: var(--text-secondary);
             font-size: 0.8rem;
-            opacity: 0.4;
+            opacity: 0.0;
         }
         .case-content { flex: 1; padding: 60px; }
         .stat-row { display: flex; gap: 40px; margin-top: 30px; }
@@ -441,18 +467,19 @@
                     <li>
                         <a href="#services">Services</a>
                         <ul class="submenu">
-                            <li><a href="/ai-content-production">AI Content Production</a></li>
-                            <li><a href="/ai-distribution">AI Distribution & Management</a></li>
-                            <li><a href="/ugc-engineering">UGC Ecosystem Engineering</a></li>
-                            <li><a href="/growth-consulting">Growth Consulting & Tech Stack</a></li>
+                            <li><a href="/services/AI-content-production.html">AI Content Production</a></li>
+                            <li><a href="/services/matrix-distribution.html">Matrix Distribution & Management</a></li>
+                            <li><a href="/services/ugc-engineering.html">UGC Ecosystem Engineering</a></li>
+                            <li><a href="/services/tiktok-growth-consulting.html">TikTok Growth Consulting & Tech Stack</a></li>
+                            <li><a href="/services/supply-chain-management.html">supply-chain Management</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#showcase">Case Studies</a>
                         <ul class="submenu">
-                            <li><a href="/case-studies/e-commerce">E-Commerce Retailer</a></li>
-                            <li><a href="/case-studies/fintech">FinTech Expansion</a></li>
-                            <li><a href="/case-studies/saas">B2B SaaS Onboarding</a></li>
+                            <li><a href="/case-studies/case-study-e-commerce.html">E-Commerce Retailer</a></li>
+                            <li><a href="/case-studies/case-study-B2B.html">B2B Business Development</a></li>
+                            <li><a href="/case-studies/case-study-saas.html">B2B SaaS Onboarding</a></li>
                         </ul>
                     </li>
                     <li><a href="#about">About</a></li>
@@ -477,9 +504,9 @@
 
     <section class="hero" id="hero">
         <div class="hero-content">
-            <span class="tagline">AI-Driven Global Marketing Infrastructure</span>
-            <h1>Exponential Scale.<br><span class="highlight">Precision Reach.</span></h1>
-            <p>We empower enterprises to mass-produce, distribute, and optimize marketing content using proprietary AI systems. Low cost. Maximum impact.</p>
+            <span class="tagline">AI-Driven Global Content Production</span>
+            <h1>AI-Native Creation.<br><span class="highlight">Professional Scale.</span></h1>
+            <p>The premier studio for commercial-ready AI and UGC videos, leveraging algorithmic distribution to turn predictable costs into limitless global exposure.</p>
             <button class="cta-btn-main">Ignite Your Growth</button>
         </div>
     </section>
@@ -520,26 +547,65 @@
         </div>
 
         <div class="showcase-grid">
-            <div class="case-study">
+             <div class="case-study">
                 <div class="case-visual">
+                    <img src="/assets/images/1483.jpg" style="max-width: 100%; height: auto;">
                     </div>
                 <div class="case-content">
-                    <span class="tagline">Success Story / E-Commerce</span>
-                    <h2 class="section-title" style="font-size: 1.8rem;">Global Retailer Scaling</h2>
+                    <span class="tagline">Success Story / E-COMMERCE RETAILERS</span>
+                    <h2 class="section-title" style="font-size: 1.8rem;">Content Driven TikTok Shop Growth</h2>
                     <p style="color: var(--text-secondary); margin-bottom: 30px;">
-                        Leveraging the Aktivismus AI Matrix, we helped a Top 500 retailer restructure their content supply chain within 90 days.
+                        Through Aktivismus’s AI-powered content ecosystem, we helped a premier US native brand achieve unprecedented creative scale and marketing efficiency within a single growth cycle.
+                    </p>
+                    <div class="stat-row">
+                        <div class="stat-item">
+                            <strong>1200+</strong>
+                            <span>Monthly video assets</span>
+                        </div>
+                    
+                        <div class="stat-item">
+                            <strong>70%</strong>
+                            <span>Boost in ads performance</span>
+                        </div>
+
+                        <div class="stat-item">
+                            <strong>-50%</strong>
+                            <span>Content production costs</span>
+                        </div>
+
+                    </div>
+                    <a href="/case-studies/case-study-e-commerce.html" class="cta-btn-small" style="margin-top: 30px; display: inline-block; margin-left: 0;">View Full Case Study →</a>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <div class="case-visual">
+                    <img src="/assets/images/1483.jpg" style="max-width: 100%; height: auto;">
+                    </div>
+                <div class="case-content">
+                    <span class="tagline">Success Story / B2B Business Development</span>
+                    <h2 class="section-title" style="font-size: 1.8rem;">Global Business Development Scaling</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 30px;">
+                        Leveraging the Aktivismus AI-powered content production and distribution capabilities, we helped a legacy international trader achieve exponential growth in lead generation, scaling their results by over 10x within a 4-week window.
                     </p>
                     <div class="stat-row">
                         <div class="stat-item">
                             <strong>300%</strong>
-                            <span>Output Efficiency</span>
+                            <span>Content Output</span>
                         </div>
+                    
                         <div class="stat-item">
-                            <strong>45%</strong>
-                            <span>CAC Reduction</span>
+                            <strong>0</strong>
+                            <span>PAID ADS SPEND</span>
                         </div>
+
+                        <div class="stat-item">
+                            <strong>1000+</strong>
+                            <span>LEAD GEN <br> in 4 weeks</span>
+                        </div>
+
                     </div>
-                    <a href="#" class="cta-btn-small" style="margin-top: 30px; display: inline-block; margin-left: 0;">View Full Case Study →</a>
+                    <a href="/case-studies/case-study-B2B.html" class="cta-btn-small" style="margin-top: 30px; display: inline-block; margin-left: 0;">View Full Case Study →</a>
                 </div>
             </div>
             </div>
@@ -552,10 +618,12 @@
         <div class="about-us-container">
             <div class="about-text">
                 <p style="color: var(--text-secondary); font-size: 1.05rem;">
-                    **Aktivismus** is a next-generation AI marketing technology firm. We address the core pain points of executives and entrepreneurs: **high content costs, difficult AI adoption, and non-quantifiable marketing ROI**. We are not just a tool provider; we are your **AI Marketing Architects**.
+                    Aktivismus is a AI-native marketing technology company. We address the core pain points of executives and entrepreneurs: 
+                    high content costs, difficult AI adoption, and non-quantifiable marketing ROI. 
+                    We are not just a tool provider; we are your AI Marketing Architects.
                 </p>
                 <p style="color: var(--text-secondary); font-size: 1.05rem; margin-top: 15px;">
-                    Our proprietary technology features a content engine that **self-learns and iterates**, generating dozens of brand-consistent content variants across diverse channels in a short time. This is a strategic upgrade, transforming content marketing from a cost center into a **profit engine**. We make marketing results predictable, controllable, and scalable.
+                    Our proprietary technology features a content engine that self-learns and iterates**, generating dozens of brand-consistent content variants across diverse channels in a short time. This is a strategic upgrade, transforming content marketing from a cost center into a profit engine. We make marketing results predictable, controllable, and scalable.
                 </p>
                 <div class="contact-info" id="contact">
                     <p>Connect with our Growth Experts today:</p>
@@ -564,8 +632,7 @@
                 </div>
             </div>
             <div class="about-visual">
-                 
-                AI Content Engine | Real-time Workflow Visualization
+                <img src="/assets/images/team.png" alt="Diagram of Aktivismus AI Content Workflow" style="max-width: 100%; height: auto;">
             </div>
         </div>
     </section>
