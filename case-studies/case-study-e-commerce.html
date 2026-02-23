@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study | AI-Driven Global Marketing</title>
+
+    <link rel="icon" type="image/png" href="/assets/images/favicon_32*32.png"> 
+    <link rel="shortcut icon" href="/assets/images/favicon_32*32.png">
+
+    <link href="https://g.alicdn.com/alifd/global-font/latest/AlibabaPuHuiTi.css" rel="stylesheet">
+    <style>
+        /* === 原文件 Global Variables === */
+        :root {
+            --bg-color: #131313;
+            --card-bg: #1A1A1A;
+            --text-main: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --accent-color: #00EEFF;
+            --accent-hover: #00C0D0;
+            --gradient-bg: linear-gradient(135deg, #131313 0%, #000000 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Alibaba PuHuiTi 3.0', 'Inter', sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* === 原文件 Header === */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 25px 5%; background: rgba(19, 19, 19, 0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .logo-link { height: 40px; display: flex; align-items: center; }
+        .logo-svg { height: 100%; width: auto; }
+        .logo-svg path:nth-child(1) { fill: var(--text-main) !important; }
+        .logo-svg path:nth-child(2) { fill: var(--accent-color) !important; }
+        .nav-group { display: flex; align-items: center; gap: 30px; }
+        nav ul { display: flex; gap: 25px; }
+        nav a { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); }
+        nav a:hover, nav a.active { color: var(--text-main); }
+        nav ul li { position: relative; padding: 0 5px; }
+        .submenu { display: none; position: absolute; top: 100%; left: -15px; min-width: 220px; background-color: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1); border-top: none; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); padding: 10px 0; z-index: 1010; }
+        .submenu li { padding: 0; }
+        .submenu a { display: block; padding: 10px 20px; font-size: 0.9rem; font-weight: 400; color: var(--text-secondary); white-space: nowrap; }
+        .submenu a:hover { color: var(--accent-color); background-color: rgba(0, 238, 255, 0.05); }
+        nav ul li:hover > .submenu { display: block; }
+        .lang-switch { display: flex; gap: 10px; font-size: 0.85rem; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 20px; }
+        .lang-switch a { color: var(--text-secondary); opacity: 0.6; }
+        .lang-switch a.current { color: var(--accent-color); opacity: 1; font-weight: bold; }
+        .lang-switch a:hover { opacity: 1; }
+        .cta-btn-small { background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); padding: 8px 20px; border-radius: 4px; font-weight: 600; margin-left: 20px; }
+        .cta-btn-small:hover { background: var(--accent-color); color: #000; box-shadow: 0 0 15px rgba(0, 238, 255, 0.4); }
+        .menu-toggle { display: none; cursor: pointer; width: 30px; height: 30px; position: relative; z-index: 1100; border: none; background: none; margin-left: 20px; }
+        .menu-toggle span { display: block; height: 2px; width: 100%; background: var(--text-main); margin-bottom: 6px; border-radius: 2px; transition: all 0.3s ease; }
+        .menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.open span:nth-child(2) { opacity: 0; }
+        .menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .cta-btn-main { background: var(--accent-color); color: #000; padding: 16px 45px; font-size: 1.1rem; font-weight: 700; border-radius: 4px; border: none; cursor: pointer; transition: 0.2s; }
+        .cta-btn-main:hover { transform: translateY(-3px); box-shadow: 0 0 40px rgba(0, 238, 255, 0.4); }
+        footer { padding: 60px 5%; border-top: 1px solid rgba(255,255,255,0.05); background: #131313; color: var(--text-secondary); font-size: 0.9rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+
+        /* ========================================= */
+        /* === Case Study 专属杂志化排版样式 ======= */
+        /* ========================================= */
+
+        /* 1. 案例头部：极简、巨大留白、聚焦标题 */
+        .cs-hero {
+            padding: 180px 5% 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .cs-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .cs-tags span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 15px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 238, 255, 0.3);
+            color: var(--accent-color);
+            background: rgba(0, 238, 255, 0.05);
+        }
+        .cs-hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #FFFFFF, #B0B0B0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cs-hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 2. 案例主视觉 / 视频占位 */
+        .cs-main-visual {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            height: 600px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+            /* 让视频完美覆盖整个容器 */
+        .bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 这个属性最关键：保证视频填满且不变形，多余部分会自动裁剪 */
+            z-index: 1; /* 保证视频在底层 */
+            border-radius: 16px; /* 让视频边缘跟随容器的圆角 */
+            pointer-events: none; /* 终极护盾：让视频彻底变成“不可触碰”的背景层 */
+        }
+
+
+        /* 3. 数据高亮横幅 (Bento Style 初阶) */
+        .cs-metrics-bar {
+            max-width: 1200px;
+            margin: -50px auto 100px; /* 向上重叠一点点，打破常规网格 */
+            position: relative;
+            z-index: 10;
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 40px;
+            gap: 40px;
+        }
+        .metric-item {
+            border-right: 1px solid rgba(255,255,255,0.05);
+        }
+        .metric-item:last-child { border-right: none; }
+        .metric-item h3 {
+            font-size: 3.5rem;
+            color: var(--accent-color);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        .metric-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 4. 文本阅读区：左边导航，右边内容 (杂志排版) */
+        .cs-content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            display: grid;
+            grid-template-columns: 1fr 2.5fr;
+            gap: 60px;
+        }
+        .cs-sidebar h4 {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+        .cs-sidebar p { color: var(--text-secondary); margin-bottom: 30px; font-size: 0.95rem; }
+        
+        .cs-article h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #FFF;
+        }
+        .cs-article p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        /* 5. Bento Box Grid 便当盒网格 (用于展示具体执行亮点) */
+        .bento-grid {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 20px;
+        }
+        .bento-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 40px;
+            transition: 0.3s;
+        }
+        .bento-item:hover { border-color: rgba(0, 238, 255, 0.3); }
+        .bento-large { grid-column: span 2; }
+        .bento-item h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .bento-item p { color: var(--text-secondary); font-size: 1rem; }
+        /* 便当盒里的图片占位符 */
+        .bento-img-placeholder {
+            width: 100%; height: 200px; background: rgba(255,255,255,0.02); border-radius: 8px; margin-top: 20px;
+            display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.2); font-size: 0.8rem; border: 1px dashed rgba(255,255,255,0.1);
+        }
+
+        /* 6. 客户证言区 (巨大引言) */
+        .cs-testimonial {
+            max-width: 1000px;
+            margin: 0 auto 120px;
+            text-align: center;
+        }
+        .cs-testimonial blockquote {
+            font-size: 2.2rem;
+            font-weight: 500;
+            line-height: 1.4;
+            color: #FFF;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .cs-testimonial blockquote::before {
+            content: '"';
+            position: absolute;
+            top: -40px; left: -20px;
+            font-size: 6rem;
+            color: var(--accent-color);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        .cs-author { color: var(--text-secondary); font-size: 1.1rem; }
+
+        /* 底部 CTA 保持一致 */
+        .bottom-cta { text-align: center; padding: 100px 5%; background: var(--gradient-bg); border-top: 1px solid rgba(255,255,255,0.05); }
+
+        /* === 移动端适配 === */
+        @media (max-width: 768px) {
+            .cs-hero { padding: 140px 5% 40px; }
+            .cs-hero h1 { font-size: 2.5rem; }
+            .cs-main-visual { height: 300px; margin-bottom: 60px; }
+            .cs-metrics-bar { grid-template-columns: 1fr; gap: 20px; padding: 30px; margin: -30px 5% 60px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+            .metric-item { border-right: none; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+            .metric-item:last-child { border-bottom: none; padding-bottom: 0; }
+            .cs-content-wrapper { grid-template-columns: 1fr; gap: 40px; padding: 0 5%; }
+            .bento-grid { grid-template-columns: 1fr; padding: 0 5%; }
+            .bento-large { grid-column: span 1; }
+            .cs-testimonial { padding: 0 5%; }
+            .cs-testimonial blockquote { font-size: 1.5rem; }
+
+            /* 原导航逻辑 */
+            .menu-toggle { display: block; }
+            .lang-switch, .cta-btn-small { display: none; }
+            nav { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: var(--bg-color); padding-top: 100px; z-index: 999; overflow-y: auto; }
+            nav.open { display: block; }
+            nav ul { flex-direction: column; text-align: center; gap: 0; }
+            nav ul li { border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+            nav a, .submenu a { padding: 15px 20px; font-size: 1.2rem; }
+            .submenu { position: static; display: block !important; background-color: transparent; border: none; box-shadow: none; padding: 0; margin-top: 0; }
+            .submenu li a { font-size: 1rem; padding: 10px 20px 10px 40px; color: var(--text-secondary); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo-link">
+            <svg class="logo-svg" viewBox="0 0 442 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M42.9189 75L41.0459 70.1501H26.5298L29.6069 61.3535H37.6343L25.7605 30.6155H40.1763L57.8699 75H42.9189ZM8.30103 75L24.155 32.6223L30.7107 50.249L22.583 75H8.30103ZM87.5469 51.128L102.907 75H87.7389L76.8589 56.568H75.1309V75H62.3949V30.584H75.1309V46.584H76.8589L87.6109 30.584H102.267L87.5469 51.128ZM137.557 30.584V41.72H126.933V75H114.261V41.72H103.701V30.584H137.557ZM143.02 75V30.584H155.756V75H143.02ZM176.175 75L160.687 30.584H174.895L184.239 61.432H184.623L194.479 30.584H207.919L191.983 75H176.175ZM212.832 75V30.584H225.568V75H212.832ZM245.988 75.64C241.06 75.64 236.324 74.936 233.188 74.168V63.224C236.132 64.056 241.316 64.888 245.284 64.888C250.596 64.888 251.3 63.992 251.3 61.24C251.3 59.384 250.468 58.296 244.9 56.952C235.172 54.712 232.868 51.64 232.868 43.768C232.868 33.272 239.652 29.944 250.276 29.944C255.844 29.944 259.3 30.712 261.796 31.544V41.72C259.94 41.016 254.372 40.184 250.852 40.184C246.756 40.184 245.156 41.144 245.156 43.256C245.156 45.304 246.116 45.752 251.62 47.16C262.692 50.04 264.036 53.56 264.036 61.624C264.036 70.456 259.748 75.64 245.988 75.64ZM271.582 75V30.584H292.382L296.734 52.856H297.118L302.046 30.584H322.078V75H309.598V42.808H309.214L302.878 67.896H290.462L284.318 42.808H283.934V75H271.582ZM350.296 75.64C337.816 75.64 330.328 72.44 330.328 59.96V30.584H343.064V59.064C343.064 61.944 344.152 64.76 350.296 64.76C356.632 64.76 357.656 61.432 357.656 59.064V30.584H370.328V59.96C370.328 71.288 362.776 75.64 350.296 75.64ZM390.613 75.64C385.685 75.64 380.949 74.936 377.813 74.168V63.224C380.757 64.056 385.941 64.888 389.909 64.888C395.221 64.888 395.925 63.992 395.925 61.24C395.925 59.384 395.093 58.296 389.525 56.952C379.797 54.712 377.493 51.64 377.493 43.768C377.493 33.272 384.277 29.944 394.901 29.944C400.469 29.944 403.925 30.712 406.421 31.544V41.72C404.565 41.016 398.997 40.184 395.477 40.184C391.381 40.184 389.781 41.144 389.781 43.256C389.781 45.304 390.741 45.752 396.245 47.16C407.317 50.04 408.661 53.56 408.661 61.624C408.661 70.456 404.373 75.64 390.613 75.64Z" fill="white"/>
+                <path d="M421.933 75.384C415.533 75.384 415.149 74.36 415.149 68.472C415.149 62.52 415.533 61.496 421.933 61.496C428.205 61.496 428.781 62.52 428.781 68.472C428.781 74.36 428.205 75.384 421.933 75.384Z" fill="#00EEFF"/>
+            </svg>
+        </a>
+        <div class="nav-group">
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li>
+                        <a href="#services" class="active">Services</a> 
+                        <ul class="submenu">
+                            <li><a href="/services/AI-content-production.html">AI Content Production</a></li>
+                            <li><a href="/services/matrix-distribution.html">Matrix Distribution & Management</a></li>
+                            <li><a href="/services/ugc-engineering.html">UGC Ecosystem Engineering</a></li>
+                            <li><a href="/services/tiktok-growth-consulting.html">Growth Consulting & Tech Stack</a></li>
+                            <li><a href="/services/supply-chain-management.html">Supply-chain Management</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#showcase">Case Studies</a>
+                        <ul class="submenu">
+                            <li><a href="/case-studies/case-study-e-commerce.html">E-Commerce Retailer</a></li>
+                            <li><a href="/case-studies/case-study-B2B.html">B2B Business Development</a></li>
+                            <li><a href="/case-studies/travel-lead-gen.html">Travel Lead Gen</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+            <div class="lang-switch" id="lang-switch-group">
+                <a href="#" class="current" data-lang="en">EN</a><span>/</span><a href="#" data-lang="cn">CN</a>
+            </div>
+            <a href="#contact" class="cta-btn-small">Contact Us</a>
+            <button class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <section class="cs-hero">
+        <div class="cs-tags">
+            <span>E-Commerce</span>
+            <span>TikTok Shop US</span>
+            <span>AI Content Production</span>
+        </div>
+        <h1>Scaling TikTok Shop GMV for a Leading Home & Living Brand</h1>
+        <p>How we leveraged customized AI Avatars and high-volume automated video generation to dominate the US TikTok Shop algorithm for cleaning and gardening products.</p>
+    </section>
+
+    <div class="cs-main-visual">
+        <video class="bg-video" autoplay loop muted playsinline>
+            controlsList="nodownload" 
+            oncontextmenu="return false;" 
+            disablePictureInPicture>
+            <source src="/assets/videos/FunnyHook_4.mp" type="video/mp4">
+            Not supported by your browser.
+        </video>
+    </div>
+
+    <div class="cs-metrics-bar">
+        <div class="metric-item">
+            <h3>1,200+</h3>
+            <p>Monthly Videos Generated</p>
+        </div>
+        <div class="metric-item">
+            <h3>70%</h3>
+            <p>Increase in ROAS</p>
+        </div>
+        <div class="metric-item">
+            <h3>-50%</h3>
+            <p>Content production cost</p>
+        </div>
+    </div>
+
+    <section class="cs-content-wrapper">
+        <aside class="cs-sidebar">
+            <h4>Client</h4>
+            <p>A top-tier Home & Living brand focusing on the US market.</p>
+            
+            <h4>The Challenge</h4>
+            <p>Scaling TikTok Shop requires massive content volume. Traditional studios couldn't produce high-quality product demos (like retractable water hoses and cleaning supplies) fast enough or cheap enough for aggressive A/B testing.</p>
+            
+            <h4>Our Role</h4>
+            <p>Aktivismus stepped in as the end-to-end AI Marketing Architect, deploying automated content pipelines and localized digital human models.</p>
+        </aside>
+        
+        <article class="cs-article">
+            <h2>Breaking the Content Bottleneck with AI-Native Pipelines.</h2>
+            <p>To win on TikTok Shop US, you don't need one perfect video; you need hundreds of highly-targeted, culturally resonant variations to test against the algorithm. For a home products brand, this means demonstrating utility—how the cleaning spray works, how the water hose retracts—in countless scenarios.</p>
+            <p>Instead of hiring dozens of actors and booking studios, we implemented our proprietary AI Content Engine. We trained localized "AI Avatars" that perfectly match the demographic of the target audience, combining them with hyper-realistic product rendering.</p>
+        </article>
+    </section>
+
+    <section class="bento-grid">
+        <div class="bento-item bento-large">
+            <h3>Localized AI Avatars</h3>
+            <p>We generated diverse, culturally accurate digital hosts specifically tailored for the US audience, eliminating the need for expensive on-screen talent for everyday product pitches.</p>
+            <div class="bento-img-placeholder">[ UI Mockup: AI Avatar Generation Dashboard ]</div>
+        </div>
+        <div class="bento-item">
+            <h3>Product Scene Generation</h3>
+            <p>Through text-to-image and image-to-video models, we placed their cleaning products into hundreds of different realistic home environments in minutes.</p>
+        </div>
+        <div class="bento-item">
+            <h3>Automated Scripting</h3>
+            <p>LLM-powered generation of highly converting social media bios and viral video scripts, specifically tuned for TikTok's fast-paced viewing habits.</p>
+        </div>
+        <div class="bento-item bento-large">
+            <h3>High-Fidelity Rendering</h3>
+            <p>Ensured precise physical interactions in the video (e.g., the expansion and contraction of a retractable hose) were generated with commercial-ready quality.</p>
+            <div class="bento-img-placeholder">[ Workflow: Raw Product Image -> AI Enhanced Video ]</div>
+        </div>
+    </section>
+
+    <section class="cs-testimonial">
+        <blockquote>
+            Aktivismus didn't just give us a tool; they completely re-engineered our content supply chain. We are now testing more creatives in a week than we used to in an entire quarter.
+        </blockquote>
+        <div class="cs-author">
+            <strong>Head of TikTok E-Commerce</strong><br>
+            US Home & Living Brand
+        </div>
+    </section>
+
+    <section class="bottom-cta">
+        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Ready to Write Your Own Success Story?</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1.1rem;">Discover how our AI Content Engine can scale your brand globally.</p>
+        <button class="cta-btn-main">Schedule a Discovery Call</button>
+    </section>
+
+    <footer>
+        <div>&copy; 2025 Aktivismus Limited. All Rights Reserved.</div>
+        <div>
+            <a href="/t&c.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/t&c.html">Terms of Service</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const langLinks = document.querySelectorAll('#lang-switch-group a');
+            const navLinks = mainNav.querySelectorAll('a');
+
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('open');
+                menuToggle.classList.toggle('open');
+                if (mainNav.classList.contains('open')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('open');
+                        menuToggle.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+
+            langLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); 
+                    const targetLang = link.getAttribute('data-lang');
+                    langLinks.forEach(l => l.classList.remove('current'));
+                    link.classList.add('current');
+                    document.documentElement.lang = targetLang;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

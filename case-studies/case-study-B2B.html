@@ -1,0 +1,174 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | System Error - Aktivismus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #121212;
+            --text-main: #FFFFFF;
+            --accent-color: #00F0FF;
+            --error-color: #FF0055; /* 故障红，用于对比 */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 背景网格装饰，增加科技感 */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                linear-gradient(rgba(18, 18, 18, 1) 50%, rgba(0, 240, 255, 0.05) 50%),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 4px, 40px 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* 404 故障文字特效 */
+        .glitch-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .glitch {
+            font-size: 8rem;
+            font-weight: 900;
+            line-height: 1;
+            position: relative;
+            color: var(--text-main);
+            letter-spacing: -5px;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+        }
+
+        /* 红色残影 */
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--error-color);
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+        }
+
+        /* 青色残影 */
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 var(--accent-color);
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 2.5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(10px, 9999px, 30px, 0); }
+            20% { clip: rect(80px, 9999px, 100px, 0); }
+            40% { clip: rect(30px, 9999px, 60px, 0); }
+            60% { clip: rect(70px, 9999px, 90px, 0); }
+            80% { clip: rect(20px, 9999px, 50px, 0); }
+            100% { clip: rect(90px, 9999px, 110px, 0); }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(60px, 9999px, 90px, 0); }
+            20% { clip: rect(10px, 9999px, 40px, 0); }
+            40% { clip: rect(80px, 9999px, 100px, 0); }
+            60% { clip: rect(30px, 9999px, 50px, 0); }
+            80% { clip: rect(90px, 9999px, 110px, 0); }
+            100% { clip: rect(20px, 9999px, 60px, 0); }
+        }
+
+        /* 说明文字 */
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 400px;
+            line-height: 1.6;
+        }
+
+        /* 按钮样式 */
+        .btn-home {
+            display: inline-block;
+            padding: 12px 35px;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-home:hover {
+            background: var(--accent-color);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+        }
+
+        /* 装饰性的代码元素 */
+        .code-deco {
+            position: absolute;
+            bottom: 20px;
+            font-family: monospace;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.8rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="glitch-wrapper">
+        <h1 class="glitch" data-text="B2B Business">B2B Business</h1>
+    </div>
+
+    <h2>System Error / 信号丢失</h2>
+    
+    <p>
+        The AI model could not predict this path.<br>
+        AI 模型无法预测此路径，或者该页面已被归入虚空。
+    </p>
+
+    <a href="/" class="btn-home">
+        Reboot System (Return Home)
+    </a>
+
+    <div class="code-deco">
+        ERR_CODE: NETWORK_UNREACHABLE // INITIATING RECOVERY_PROTOCOL...
+    </div>
+
+</body>
+</html>
