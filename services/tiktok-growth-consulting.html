@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service / Case Study | AI-Driven Global Marketing</title>
+
+    <link rel="icon" type="image/png" href="/assets/images/favicon_32*32.png"> 
+    <link rel="shortcut icon" href="/assets/images/favicon_32*32.png">
+
+    <link href="https://g.alicdn.com/alifd/global-font/latest/AlibabaPuHuiTi.css" rel="stylesheet">
+    <style>
+        /* === 原文件 Global Variables === */
+        :root {
+            --bg-color: #131313;
+            --card-bg: #1A1A1A;
+            --text-main: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --accent-color: #00EEFF;
+            --accent-hover: #00C0D0;
+            --gradient-bg: linear-gradient(135deg, #131313 0%, #000000 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Alibaba PuHuiTi 3.0', 'Inter', sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* === 原文件 Header & Nav === */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 5%; 
+            background: rgba(19, 19, 19, 0.95); 
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-link { height: 40px; display: flex; align-items: center; }
+        .logo-svg { height: 100%; width: auto; }
+        .logo-svg path:nth-child(1) { fill: var(--text-main) !important; }
+        .logo-svg path:nth-child(2) { fill: var(--accent-color) !important; }
+
+        .nav-group { display: flex; align-items: center; gap: 30px; }
+        
+        /* 桌面端主菜单 */
+        nav ul { display: flex; gap: 25px; }
+        nav a { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); }
+        nav a:hover, nav a.active { color: var(--text-main); }
+
+        /* === 原文件 下拉菜单样式 === */
+        nav ul li {
+            position: relative;
+            padding: 0 5px; 
+        }
+        
+        .submenu {
+            display: none; 
+            position: absolute;
+            top: 100%; 
+            left: -15px; 
+            min-width: 220px;
+            background-color: var(--card-bg); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: none;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            padding: 10px 0;
+            z-index: 1010;
+        }
+
+        .submenu li { padding: 0; }
+        .submenu a {
+            display: block; 
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 400; 
+            color: var(--text-secondary);
+            white-space: nowrap; 
+        }
+        .submenu a:hover {
+            color: var(--accent-color);
+            background-color: rgba(0, 238, 255, 0.05);
+        }
+        
+        /* 鼠标悬停时显示子菜单 */
+        nav ul li:hover > .submenu {
+            display: block;
+        }
+        
+        /* 原文件 Language Switcher */
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+            font-size: 0.85rem;
+            border-left: 1px solid rgba(255,255,255,0.2);
+            padding-left: 20px;
+        }
+        .lang-switch a { color: var(--text-secondary); opacity: 0.6; }
+        .lang-switch a.current { color: var(--accent-color); opacity: 1; font-weight: bold; }
+        .lang-switch a:hover { opacity: 1; }
+
+        .cta-btn-small {
+            background: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-left: 20px;
+        }
+        .cta-btn-small:hover {
+            background: var(--accent-color);
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 238, 255, 0.4);
+        }
+
+        /* === 原文件 汉堡菜单按钮样式 (默认隐藏) === */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            z-index: 1100;
+            border: none;
+            background: none;
+            margin-left: 20px;
+        }
+        .menu-toggle span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background: var(--text-main);
+            margin-bottom: 6px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.open span:nth-child(2) { opacity: 0; }
+        .menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        .cta-btn-main {
+            background: var(--accent-color);
+            color: #000;
+            padding: 16px 45px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .cta-btn-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px rgba(0, 238, 255, 0.4);
+        }
+
+        /* 原文件 Footer */
+        footer {
+            padding: 60px 5%;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background: #131313;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* ========================================= */
+        /* === 新增：子页面 (Subpage) 专属样式 ======= */
+        /* ========================================= */
+        
+        .subpage-section { padding: 100px 5%; }
+        .bg-darker { background: var(--bg-color); } /* 保持原版风格 */
+
+        .subpage-hero {
+            padding: 180px 5% 80px; 
+            text-align: left; 
+            background: var(--gradient-bg);
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .breadcrumb {
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: inline-block;
+            border-bottom: 1px solid rgba(0, 238, 255, 0.3);
+            padding-bottom: 5px;
+        }
+        .subpage-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            max-width: 800px;
+        }
+        .subpage-hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 650px;
+        }
+
+        .two-column-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .two-column-wrapper.reverse {
+            direction: rtl;
+        }
+        .two-column-wrapper.reverse > * {
+            direction: ltr;
+        }
+        .content-text h2 { font-size: 2.2rem; margin-bottom: 20px; }
+        .content-text p { color: var(--text-secondary); margin-bottom: 20px; font-size: 1.05rem; }
+        .content-list { margin-top: 30px; }
+        .content-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+        .content-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        .content-visual {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .feature-grid-container { max-width: 1200px; margin: 0 auto; }
+        .feature-grid-header { text-align: center; margin-bottom: 60px; }
+        .feature-grid-header h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .feature-icon { font-size: 2rem; color: var(--accent-color); margin-bottom: 20px; }
+        .feature-card h3 { margin-bottom: 15px; font-size: 1.3rem; }
+        .feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
+
+        .results-banner {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 238, 255, 0.2);
+            border-radius: 12px;
+            padding: 60px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            text-align: center;
+        }
+        .result-item strong {
+            display: block;
+            font-size: 3.5rem;
+            color: var(--accent-color);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        .result-item span { font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
+
+        .bottom-cta {
+            text-align: center;
+            padding: 80px 5%;
+            background: var(--gradient-bg);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .bottom-cta h2 { font-size: 2.5rem; margin-bottom: 20px; }
+
+
+        /* === 原文件 Media Query 移动端适配 (并合并子页面样式) === */
+        @media (max-width: 768px) {
+            /* 1. 窄屏时显示汉堡菜单按钮，隐藏 CTA, 导航, 语言切换 */
+            .menu-toggle { display: block; }
+            .lang-switch, .cta-btn-small { display: none; }
+
+            /* 2. 窄屏时导航栏样式调整为全屏抽屉 */
+            nav {
+                display: none; 
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--bg-color); 
+                padding-top: 100px;
+                z-index: 999;
+                overflow-y: auto;
+            }
+            nav.open { display: block; }
+            nav ul { flex-direction: column; text-align: center; gap: 0; }
+            nav ul li { border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+            nav a, .submenu a { padding: 15px 20px; font-size: 1.2rem; }
+            
+            /* 3. 窄屏时下拉菜单处理 */
+            .submenu {
+                position: static; 
+                display: block !important; 
+                background-color: transparent;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                margin-top: 0;
+            }
+            .submenu li a { font-size: 1rem; padding: 10px 20px 10px 40px; color: var(--text-secondary); }
+
+            /* 子页面移动端适配调整 */
+            .subpage-hero { padding: 150px 5% 60px; text-align: center; }
+            .subpage-hero h1 { font-size: 2.5rem; }
+            .two-column-wrapper { grid-template-columns: 1fr; gap: 40px; }
+            .two-column-wrapper.reverse { direction: ltr; } /* 取消移动端翻转 */
+            .results-banner { flex-direction: column; padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo-link">
+            <svg class="logo-svg" viewBox="0 0 442 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M42.9189 75L41.0459 70.1501H26.5298L29.6069 61.3535H37.6343L25.7605 30.6155H40.1763L57.8699 75H42.9189ZM8.30103 75L24.155 32.6223L30.7107 50.249L22.583 75H8.30103ZM87.5469 51.128L102.907 75H87.7389L76.8589 56.568H75.1309V75H62.3949V30.584H75.1309V46.584H76.8589L87.6109 30.584H102.267L87.5469 51.128ZM137.557 30.584V41.72H126.933V75H114.261V41.72H103.701V30.584H137.557ZM143.02 75V30.584H155.756V75H143.02ZM176.175 75L160.687 30.584H174.895L184.239 61.432H184.623L194.479 30.584H207.919L191.983 75H176.175ZM212.832 75V30.584H225.568V75H212.832ZM245.988 75.64C241.06 75.64 236.324 74.936 233.188 74.168V63.224C236.132 64.056 241.316 64.888 245.284 64.888C250.596 64.888 251.3 63.992 251.3 61.24C251.3 59.384 250.468 58.296 244.9 56.952C235.172 54.712 232.868 51.64 232.868 43.768C232.868 33.272 239.652 29.944 250.276 29.944C255.844 29.944 259.3 30.712 261.796 31.544V41.72C259.94 41.016 254.372 40.184 250.852 40.184C246.756 40.184 245.156 41.144 245.156 43.256C245.156 45.304 246.116 45.752 251.62 47.16C262.692 50.04 264.036 53.56 264.036 61.624C264.036 70.456 259.748 75.64 245.988 75.64ZM271.582 75V30.584H292.382L296.734 52.856H297.118L302.046 30.584H322.078V75H309.598V42.808H309.214L302.878 67.896H290.462L284.318 42.808H283.934V75H271.582ZM350.296 75.64C337.816 75.64 330.328 72.44 330.328 59.96V30.584H343.064V59.064C343.064 61.944 344.152 64.76 350.296 64.76C356.632 64.76 357.656 61.432 357.656 59.064V30.584H370.328V59.96C370.328 71.288 362.776 75.64 350.296 75.64ZM390.613 75.64C385.685 75.64 380.949 74.936 377.813 74.168V63.224C380.757 64.056 385.941 64.888 389.909 64.888C395.221 64.888 395.925 63.992 395.925 61.24C395.925 59.384 395.093 58.296 389.525 56.952C379.797 54.712 377.493 51.64 377.493 43.768C377.493 33.272 384.277 29.944 394.901 29.944C400.469 29.944 403.925 30.712 406.421 31.544V41.72C404.565 41.016 398.997 40.184 395.477 40.184C391.381 40.184 389.781 41.144 389.781 43.256C389.781 45.304 390.741 45.752 396.245 47.16C407.317 50.04 408.661 53.56 408.661 61.624C408.661 70.456 404.373 75.64 390.613 75.64Z" fill="white"/>
+                <path d="M421.933 75.384C415.533 75.384 415.149 74.36 415.149 68.472C415.149 62.52 415.533 61.496 421.933 61.496C428.205 61.496 428.781 62.52 428.781 68.472C428.781 74.36 428.205 75.384 421.933 75.384Z" fill="#00EEFF"/>
+            </svg>
+        </a>
+        <div class="nav-group">
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li>
+                        <a href="#services" class="active">Services</a> <ul class="submenu">
+                            <li><a href="/services/AI-content-production.html">AI Content Production</a></li>
+                            <li><a href="/services/matrix-distribution.html">Matrix Distribution & Management</a></li>
+                            <li><a href="/services/ugc-engineering.html">UGC Ecosystem Engineering</a></li>
+                            <li><a href="/services/tiktok-growth-consulting.html">Growth Consulting & Tech Stack</a></li>
+                            <li><a href="/services/supply-chain-management.html">supply-chain Management</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#showcase">Case Studies</a>
+                        <ul class="submenu">
+                            <li><a href="/case-studies/case-study-e-commerce.html">E-Commerce Retailer</a></li>
+                            <li><a href="/case-studies/case-study-B2B.html">B2B Business Development</a></li>
+                            <li><a href="/case-studies/case-study-saas.html">B2B SaaS Onboarding</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+            
+            <div class="lang-switch" id="lang-switch-group">
+                <a href="#" class="current" data-lang="en">EN</a>
+                <span>/</span>
+                <a href="#" data-lang="cn">CN</a>
+            </div>
+
+            <a href="#contact" class="cta-btn-small">Contact Us</a>
+            
+            <button class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <section class="subpage-hero">
+        <span class="breadcrumb">Service / Core Capability</span>
+        <h1>Leveraging the cheapest traffic entrance, <br> more than you expected. </h1>
+        <p>We help brands acquring the traffic with the lowest cost by our TikTok insights. </p>
+        <button class="cta-btn-main">Talk to an Architect</button>
+    </section>
+
+    <section class="subpage-section" style="padding-top: 0;">
+        <div class="results-banner">
+            <div class="result-item">
+                <strong>10x</strong>
+                <span>Faster Production Cycle</span>
+            </div>
+            <div class="result-item">
+                <strong>-60%</strong>
+                <span>Cost Per Asset (CPA)</span>
+            </div>
+            <div class="result-item">
+                <strong>100%</strong>
+                <span>Brand Consistency</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="subpage-section bg-darker">
+        <div class="two-column-wrapper">
+            <div class="content-text">
+                <h2>The Old Way is Dead. Welcome to Generative Agility.</h2>
+                <p>Traditional content creation is linear, expensive, and slow to react to market trends. For global brands expanding across diverse cultural landscapes, this model simply doesn't scale.</p>
+                <p>At Aktivismus, we build bespoke generative pipelines tailored specifically to your brand's aesthetic guidelines.</p>
+                <ul class="content-list">
+                    <li>Proprietary LoRA model training on your brand assets</li>
+                    <li>Automated variant generation for A/B testing</li>
+                    <li>Multilingual text-to-video capabilities natively integrated</li>
+                </ul>
+            </div>
+            <div class="content-visual">
+                <span style="opacity: 0.5;">[Workflow Diagram / UI Mockup]</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="subpage-section">
+        <div class="two-column-wrapper reverse">
+            <div class="content-text">
+                <h2>Seamless Integration into Your Tech Stack.</h2>
+                <p>We don't just hand over files. We engineer systems. Output from our AI Content Production engine connects directly with your DAM (Digital Asset Management) or PIM systems, ready for omnichannel distribution.</p>
+                <a href="#" style="color: var(--accent-color); font-weight: bold; margin-top: 15px; display: inline-block;">Explore AI Distribution →</a>
+            </div>
+            <div class="content-visual" style="border-style: dashed; background: transparent;">
+                <span style="opacity: 0.5;">[Dashboard Integration Visual]</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="subpage-section bg-darker">
+        <div class="feature-grid-container">
+            <div class="feature-grid-header">
+                <h2>How It Works</h2>
+                <p style="color: var(--text-secondary);">A systematic approach to predictable creativity.</p>
+            </div>
+            <div class="grid-3">
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>1. Data Intake & Model Fine-tuning</h3>
+                    <p>We analyze your past top-performing creatives, brand guidelines, and product catalogs to train isolated, secure AI models.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>2. Batch Generation Pipeline</h3>
+                    <p>Utilizing high-compute clusters, we generate variations tailored for different aspect ratios, platforms (TikTok, Meta, Shopify), and localizations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>3. Human-in-the-loop QA</h3>
+                    <p>Every asset passes through our creative directors to ensure absolute brand safety and commercial viability before delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bottom-cta">
+        <h2>Ready to Scale Your Content Engine?</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1.1rem;">Stop paying for hours. Start investing in algorithms.</p>
+        <button class="cta-btn-main">Schedule a Discovery Call</button>
+    </section>
+
+    <footer>
+        <div>&copy; 2025 Aktivismus Limited. All Rights Reserved.</div>
+        <div>
+            <a href="/t&c.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/t&c.html">Terms of Service</a>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const langLinks = document.querySelectorAll('#lang-switch-group a');
+            const navLinks = mainNav.querySelectorAll('a');
+
+            // 1. 移动端菜单切换逻辑
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('open');
+                menuToggle.classList.toggle('open');
+                
+                // 确保在菜单打开时，body 不滚动
+                if (mainNav.classList.contains('open')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // 2. 点击导航链接后关闭菜单（仅限移动端）
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    // 检查是否是窄屏模式 (768px 是 CSS 中的断点)
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('open');
+                        menuToggle.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+
+            // 3. 语言切换逻辑
+            langLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // 阻止默认跳转
+
+                    const targetLang = link.getAttribute('data-lang');
+
+                    // 移除所有链接的 current 类，并添加到当前点击的链接
+                    langLinks.forEach(l => l.classList.remove('current'));
+                    link.classList.add('current');
+
+                    // 切换 HTML 标签的 lang 属性
+                    document.documentElement.lang = targetLang;
+
+                    // 可以在这里添加代码来加载/切换实际的中文/英文内容
+                    // console.log('Current language switched to:', targetLang);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
