@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8ZRKTP7YM2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8ZRKTP7YM2');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study | AI-Driven Global Marketing</title>
+
+    <link rel="icon" type="image/png" href="/assets/images/favicon_32*32.png"> 
+    <link rel="shortcut icon" href="/assets/images/favicon_32*32.png">
+
+    <link href="https://g.alicdn.com/alifd/global-font/latest/AlibabaPuHuiTi.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/navigation.css"> <!-- 统一导航栏命令 -->
+
+    <style>
+        /* === 原文件 Global Variables === */
+        :root {
+            --bg-color: #131313;
+            --card-bg: #1A1A1A;
+            --text-main: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --accent-color: #00EEFF;
+            --accent-hover: #00C0D0;
+            --gradient-bg: linear-gradient(135deg, #131313 0%, #000000 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Alibaba PuHuiTi 3.0', 'Inter', sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+       
+        /* ========================================= */
+        /* === Case Study 专属杂志化排版样式 ======= */
+        /* ========================================= */
+
+        /* 1. 案例头部：极简、巨大留白、聚焦标题 */
+        .cs-hero {
+            padding: 180px 5% 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .cs-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .cs-tags span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 15px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 238, 255, 0.3);
+            color: var(--accent-color);
+            background: rgba(0, 238, 255, 0.05);
+        }
+        .cs-hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #FFFFFF, #B0B0B0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cs-hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 2. 案例主视觉 / 视频占位 */
+        .cs-main-visual {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            height: 600px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+            /* 让视频完美覆盖整个容器 */
+        .bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 这个属性最关键：保证视频填满且不变形，多余部分会自动裁剪 */
+            z-index: 1; /* 保证视频在底层 */
+            border-radius: 16px; /* 让视频边缘跟随容器的圆角 */
+            pointer-events: none; /* 终极护盾：让视频彻底变成“不可触碰”的背景层 */
+        }
+
+
+        /* 3. 数据高亮横幅 (Bento Style 初阶) */
+        .cs-metrics-bar {
+            max-width: 1200px;
+            margin: -50px auto 100px; /* 向上重叠一点点，打破常规网格 */
+            position: relative;
+            z-index: 10;
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 40px;
+            gap: 40px;
+        }
+        .metric-item {
+            border-right: 1px solid rgba(255,255,255,0.05);
+        }
+        .metric-item:last-child { border-right: none; }
+        .metric-item h3 {
+            font-size: 3.5rem;
+            color: var(--accent-color);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        .metric-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 4. 文本阅读区：左边导航，右边内容 (杂志排版) */
+        .cs-content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            display: grid;
+            grid-template-columns: 1fr 2.5fr;
+            gap: 60px;
+        }
+        .cs-sidebar h4 {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+        .cs-sidebar p { color: var(--text-secondary); margin-bottom: 30px; font-size: 0.95rem; }
+        
+        .cs-article h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #FFF;
+        }
+        .cs-article p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        /* 5. Bento Box Grid 便当盒网格 (用于展示具体执行亮点) */
+        .bento-grid {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 20px;
+        }
+        .bento-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 40px;
+            transition: 0.3s;
+        }
+        .bento-item:hover { border-color: rgba(0, 238, 255, 0.3); }
+        .bento-large { grid-column: span 2; }
+        .bento-item h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .bento-item p { color: var(--text-secondary); font-size: 1rem; }
+        /* 便当盒里的图片占位符 */
+        .bento-img-placeholder {
+            width: 100%; height: 200px; background: rgba(255,255,255,0.02); border-radius: 8px; margin-top: 20px;
+            display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.2); font-size: 0.8rem; border: 1px dashed rgba(255,255,255,0.1);
+        }
+
+        /* 6. 客户证言区 (巨大引言) */
+        .cs-testimonial {
+            max-width: 1000px;
+            margin: 0 auto 120px;
+            text-align: center;
+        }
+        .cs-testimonial blockquote {
+            font-size: 2.2rem;
+            font-weight: 500;
+            line-height: 1.4;
+            color: #FFF;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .cs-testimonial blockquote::before {
+            content: '"';
+            position: absolute;
+            top: -40px; left: -20px;
+            font-size: 6rem;
+            color: var(--accent-color);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        .cs-author { color: var(--text-secondary); font-size: 1.1rem; }
+
+        /* 底部 CTA 保持一致 */
+        .bottom-cta { text-align: center; padding: 100px 5%; background: var(--gradient-bg); border-top: 1px solid rgba(255,255,255,0.05); }
+
+        /* === 移动端适配 === */
+        @media (max-width: 768px) {
+            .cs-hero { padding: 140px 5% 40px; }
+            .cs-hero h1 { font-size: 2.5rem; }
+            .cs-main-visual { height: 300px; margin-bottom: 60px; }
+            .cs-metrics-bar { grid-template-columns: 1fr; gap: 20px; padding: 30px; margin: -30px 5% 60px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+            .metric-item { border-right: none; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+            .metric-item:last-child { border-bottom: none; padding-bottom: 0; }
+            .cs-content-wrapper { grid-template-columns: 1fr; gap: 40px; padding: 0 5%; }
+            .bento-grid { grid-template-columns: 1fr; padding: 0 5%; }
+            .bento-large { grid-column: span 1; }
+            .cs-testimonial { padding: 0 5%; }
+            .cs-testimonial blockquote { font-size: 1.5rem; }
+
+            /* 原导航逻辑 */
+            .lang-switch, .cta-btn-small { display: none; }
+            nav { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: var(--bg-color); padding-top: 100px; z-index: 999; overflow-y: auto; }
+            nav.open { display: block; }
+            nav ul { flex-direction: column; text-align: center; gap: 0; }
+            nav ul li { border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+            nav a{ padding: 15px 20px; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="cs-hero">
+        <div class="cs-tags">
+            <span>AI Hardware</span>
+            <span>TikTok Shop Scaling</span>
+            <span>Productivity Solutions</span>
+            <span>Conversation Intelligence</span>
+        </div>
+        <h1>Driving $200,000+ in GMV for an AI-Powered Voice Recorder via Creator-Led Storytelling</h1>
+        <p>A strategic blend of authentic reviews and high-context scenario content catalyzed a massive organic sales surge for a next-gen AI Voice Recorder on TikTok US.</p>
+    </section>
+
+    <div class="cs-main-visual">
+        <video class="bg-video" autoplay loop muted playsinline>
+            controlsList="nodownload" 
+            oncontextmenu="return false;" 
+            disablePictureInPicture>
+            <source src="/assets/videos/FunnyHook_4.mp" type="video/mp4">
+            Not supported by your browser.
+        </video>
+    </div>
+
+    <div class="cs-metrics-bar">
+        <div class="metric-item">
+            <h3>$200k+</h3>
+            <p>GMV Generated</p>
+        </div>
+
+        <div class="metric-item">
+            <h3>1000+</h3>
+            <p>Orders from 1 Viral Video</p>
+        </div>
+
+        <div class="metric-item">
+            <h3>150+</h3>
+            <p>Niche Creators Synchronized</p>
+        </div>
+    </div>
+
+    <section class="cs-content-wrapper">
+        <aside class="cs-sidebar">
+            <h4>Client</h4>
+            <p>A high-growth AI technology firm specializing in intelligent productivity hardware.</p>
+            
+            <h4>The Challenge</h4>
+            <p>To successfully launch a powerful AI voice recorder in the US market, the brand needed to demonstrate its multi-functional utility—recording, transcribing, translating, and summarizing—within real-world conversation settings. Traditional advertising struggled to convey these deep-tech features in a fast-paced social environment.</p>
+            
+            <h4>Our Role</h4>
+            <p>Operating as a strategic growth partner, the focus shifted to building a highly-localized creator matrix that could translate complex AI capabilities into relatable productivity hacks for students and professionals.</p>
+        </aside>
+        
+        <article class="cs-article">
+            <h2>Winning Through Authentic Conversation Intelligence.</h2>
+            <p>The breakthrough for AI productivity hardware on TikTok lies in "Functional Storytelling." Instead of simply listing specs, we focused on how the AI voice recorder makes summarizing and transcribing conversations effortless for its users.
+            </p>
+            <p>To achieve $200,000+ in GMV, we synchronized and managed over 150 creators across the education, corporate, and tech-enthusiast niches. By empowering these creators to showcase the device in action—capturing lectures, business meetings, and interviews—the content naturally entered the TikTok recommendation pool. This "Content Density" strategy effectively communicated the device’s ability to streamline workflows, leading to multiple viral spikes and a record-breaking 1,000+ units sold from a single high-performance video.</p>
+        </article>
+    </section>
+
+    <section class="bento-grid">
+        <div class="bento-item bento-large">
+            <h3>Viral Feature Highlighting</h3>
+            <p>dentifying and scaling visual hooks that showcase the real-time transcription and instant translation features, capturing user attention in the first 2 seconds.</p>
+            <div class="bento-img-placeholder">[ UI Mockup: AI Avatar Generation Dashboard ]</div>
+        </div>
+        <div class="bento-item">
+            <h3>Contextual "Seedling" </h3>
+            <p>Placing the AI voice recorder in the hands of real students and professionals to visualize the transition from "chaotic meetings" to "organized AI-summarized notes."</p>
+        </div>
+        <div class="bento-item">
+            <h3>Conversion Path Optimization</h3>
+            <p>Fine-tuning the TikTok Shop integration and link-in-bio strategy to ensure a frictionless transition from viewing a demo to completing a purchase.</p>
+        </div>
+        <div class="bento-item bento-large">
+            <h3>Multi-Niche Creator Synchronization</h3>
+            <p> Coordinating a diverse pool of 150+ creators to build a "surround sound" brand authority effect within the US productivity and ed-tech communities.</p>
+            <div class="bento-img-placeholder">[ Workflow: Raw Product Image -> AI Enhanced Video ]</div>
+        </div>
+    </section>
+
+
+    <section class="bottom-cta">
+        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Ready to Write Your Own Success Story?</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1.1rem;">Discover how our AI Content Engine can scale your brand globally.</p>
+        <button class="cta-btn-main">Schedule a Discovery Call</button>
+    </section>
+
+    <footer>
+        <div>&copy; 2025 Aktivismus Limited. All Rights Reserved.</div>
+        <div>
+            <a href="/t&c.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/t&c.html">Terms of Service</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const langLinks = document.querySelectorAll('#lang-switch-group a');
+            const navLinks = mainNav.querySelectorAll('a');
+
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('open');
+                menuToggle.classList.toggle('open');
+                if (mainNav.classList.contains('open')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('open');
+                        menuToggle.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+
+            langLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); 
+                    const targetLang = link.getAttribute('data-lang');
+                    langLinks.forEach(l => l.classList.remove('current'));
+                    link.classList.add('current');
+                    document.documentElement.lang = targetLang;
+                });
+            });
+        });
+    </script>
+
+    <script src="/header-loader.js"></script>
+    
+</body>
+</html>
