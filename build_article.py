@@ -21,7 +21,8 @@ slug = payload.get('slug') or f"test-article-{int(datetime.now().timestamp())}"
 date_str = datetime.now().strftime('%B %d, %Y')
 
 # 将换行符转换为简单的 <p> 标签
-formatted_content = "".join([f"<p>{p}</p>" for p in content.split('\n\n') if p.strip()])
+# 修改后的代码：
+formatted_content = content
 
 # 2. 生成单独的文章 HTML 页面
 article_html = f"""<!DOCTYPE html>
