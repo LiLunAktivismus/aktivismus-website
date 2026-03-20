@@ -4,6 +4,7 @@ name: Feishu Webhook to GitHub Pages
 on:
   repository_dispatch:
     types: [publish_insight]
+  workflow_dispatch: # 手动运行的按钮
 
 jobs:
   build:
