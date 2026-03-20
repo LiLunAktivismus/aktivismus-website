@@ -1,10 +1,9 @@
 name: Feishu Webhook to GitHub Pages
 
-# 这里的 event_types 必须和飞书 Webhook JSON 里的名字完全一致
 on:
   repository_dispatch:
     types: [publish_insight]
-  workflow_dispatch: # 手动运行的按钮
+  workflow_dispatch: # 保留手动运行按钮
 
 jobs:
   build:
@@ -12,16 +11,15 @@ jobs:
 
     steps:
       - name: ⬇️ Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # 升级到 v4 消除 Node.js 警告
 
       - name: 🐍 Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5 # 升级到 v5 消除 Node.js 警告
         with:
           python-version: '3.x'
 
       - name: ⚙️ Run Build Script
         env:
-          # 将飞书传过来的数据转成字符串，塞给 Python
           CLIENT_PAYLOAD: ${{ toJson(github.event.client_payload) }}
         run: |
           python build_article.py
@@ -31,5 +29,5 @@ jobs:
           git config --global user.name 'GitHub Action Bot'
           git config --global user.email 'action@github.com'
           git add .
-          git commit -m "Auto-publish insight from Feishu: ${{ github.event.client_payload.title }}" || echo "No changes to commit"
+          git commit -m "Auto-publish insight update" || echo "No changes to commit"
           git push
