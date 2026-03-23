@@ -5,13 +5,9 @@ on:
     types: [publish_insight]
   workflow_dispatch: 
 
-# ==========================================
-# 核心修复区：赋予 GitHub 机器人写入和推送的权限
 permissions:
   contents: write
-# ==========================================
 
-# 顺手干掉那个烦人的黄色 Node 警告
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true 
 
@@ -31,7 +27,12 @@ jobs:
       - name: ⚙️ Run Build Script
         env:
           CLIENT_PAYLOAD: ${{ toJson(github.event.client_payload) }}
+          # 从 GitHub 保险箱里把飞书钥匙拿出来注入到环境变量中
+          FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
         run: |
+          # 安装网络请求库
+          pip install requests
           python build_article.py
 
       - name: 🚀 Commit and Push Changes
@@ -39,5 +40,4 @@ jobs:
           git config --global user.name 'GitHub Action Bot'
           git config --global user.email 'action@github.com'
           git add .
-          # 优化后的提交命令：如果发现有新文件才去 commit 和 push
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-publish insight update" && git push)
