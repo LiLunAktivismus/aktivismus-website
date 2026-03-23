@@ -1,8 +1,9 @@
 import os
 import json
+import requests
 from datetime import datetime
 
-# 1. 接收飞书传来的数据，增加防弹机制
+# 1. 接收飞书传来的基础数据
 payload_str = os.environ.get('CLIENT_PAYLOAD', '{}')
 
 try:
@@ -12,57 +13,101 @@ try:
 except Exception:
     payload = {}
 
-# 提取字段，如果为空则使用默认测试数据
 title = payload.get('title') or 'System Test Article'
 content = payload.get('content') or 'This is an automated test to check if the pipeline is working.'
-image_url = payload.get('image_url') or 'https://via.placeholder.com/800x400'
 slug = payload.get('slug') or f"test-article-{int(datetime.now().timestamp())}"
 tag = payload.get('tag') or 'INDUSTRY INSIGHT'
 date_str = datetime.now().strftime('%B %d, %Y')
+image_raw = payload.get('image_url', '')
 
-# 清洗出纯文本摘要 (剥离飞书公式加上的 <br> 和转义符)，用于卡片预览
+# 提取纯文本摘要，用于卡片预览
 snippet = content.replace("<br><br>", " ").replace("&quot;", '"').replace("\\\\", "\\")[:120] + "..."
 
-# 2. 生成单独的文章 HTML 页面 (读取模板并替换)
+# ==========================================
+# 🚀 核心新功能：飞书图片全自动下载器
+# ==========================================
+local_image_path = "https://via.placeholder.com/800x400" # 兜底假图
+APP_ID = os.environ.get('FEISHU_APP_ID')
+APP_SECRET = os.environ.get('FEISHU_APP_SECRET')
+
+if APP_ID and APP_SECRET and image_raw:
+    try:
+        # 1. 解析飞书传来的附件字符串 (飞书通常把它传成带 file_token 的 JSON 数组)
+        img_data = json.loads(image_raw) if isinstance(image_raw, str) and image_raw.startswith('[') else image_raw
+        
+        if isinstance(img_data, list) and len(img_data) > 0 and 'file_token' in img_data[0]:
+            file_token = img_data[0]['file_token']
+            print(f"Detected file_token: {file_token}, attempting download...")
+
+            # 2. 用钥匙去飞书换取 Tenant Access Token
+            auth_res = requests.post(
+                "https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal",
+                json={"app_id": APP_ID, "app_secret": APP_SECRET}
+            ).json()
+            
+            if auth_res.get("code") == 0:
+                tenant_token = auth_res["tenant_access_token"]
+                
+                # 3. 下载真正的图片流文件
+                download_url = f"https://open.feishu.cn/open-apis/drive/v1/medias/{file_token}/download"
+                img_res = requests.get(download_url, headers={"Authorization": f"Bearer {tenant_token}"})
+                
+                if img_res.status_code == 200:
+                    # 4. 把图片存入你网站的 assets/images 文件夹
+                    os.makedirs('assets/images', exist_ok=True)
+                    save_path = f"assets/images/{slug}.png"
+                    with open(save_path, "wb") as f:
+                        f.write(img_res.content)
+                    
+                    # 5. 把网页模板里的图片链接，替换为你自己的本地链接！
+                    local_image_path = f"/{save_path}"
+                    print(f"✅ Image successfully downloaded to: {local_image_path}")
+                else:
+                    print(f"❌ Failed to download image from Feishu: {img_res.text}")
+            else:
+                print(f"❌ Failed to get tenant token: {auth_res}")
+    except Exception as e:
+        print(f"⚠️ Error processing image download: {e}")
+
+# ==========================================
+# 2. 生成单篇文章 HTML (读取模板并替换)
+# ==========================================
 with open("article-template.html", "r", encoding="utf-8") as template_file:
     template_html = template_file.read()
 
 final_html = template_html.replace("{{TITLE}}", title)
 final_html = final_html.replace("{{TAG}}", tag)
 final_html = final_html.replace("{{DATE}}", date_str)
-final_html = final_html.replace("{{IMAGE}}", image_url)
+# 注意：这里插入的是刚刚下载到本地的图片路径
+final_html = final_html.replace("{{IMAGE}}", local_image_path) 
 final_html = final_html.replace("{{CONTENT}}", content)
 
-# 保存文章到 insights 文件夹
 os.makedirs('insights', exist_ok=True)
 file_path = f"insights/{slug}.html"
 with open(file_path, "w", encoding="utf-8") as f:
     f.write(final_html)
 
-# 3. 自动更新 insights.html 的列表页 (精准插入锚点)
+# ==========================================
+# 3. 自动更新 insights.html 的列表页
+# ==========================================
 hub_path = "insights.html"
 if os.path.exists(hub_path):
     with open(hub_path, "r", encoding="utf-8") as f:
         hub_content = f.read()
 
-    # 构建新卡片的 HTML
     new_card = f"""
         <a href="/{file_path}" class="insight-card auto-card">
             <div class="card-meta"><span>{tag}</span><span>{date_str}</span></div>
-            <div class="card-img-placeholder" style="background-image:url('{image_url}'); background-size:cover; background-position:center;"></div>
+            <div class="card-img-placeholder" style="background-image:url('{local_image_path}'); background-size:cover; background-position:center;"></div>
             <h3>{title}</h3>
             <p>{snippet}</p>
             <div class="read-more">Read More →</div>
         </a>"""
     
-    # 查找锚点并插入
     marker = ""
     if marker in hub_content:
-        hub_content = hub_content.replace(
-            marker, 
-            f'{marker}\n{new_card}'
-        )
+        hub_content = hub_content.replace(marker, f'{marker}\n{new_card}')
         with open(hub_path, "w", encoding="utf-8") as f:
             f.write(hub_content)
 
-print(f"Success! Generated {file_path} and updated insights.html")
+print(f"✅ Success! Published {file_path}")
