@@ -2,6 +2,7 @@ import os
 import json
 import requests
 from datetime import datetime
+import re 
 
 # 1. 接收飞书传来的基础数据
 payload_str = os.environ.get('CLIENT_PAYLOAD', '{}')
@@ -21,11 +22,9 @@ image_raw = payload.get('image_url', '')
 
 # Slug清洗逻辑
 raw_slug = payload.get('slug') or title
-# 先把 HTML 转义符去掉，再转换成小写
-clean_slug = raw_slug.replace('&quot;', '').replace('&#39;', '').lower()
-# 把空格替换成横线
-clean_slug = clean_slug.replace(' ', '-')
-# 使用正则：无情地抹杀掉除了“小写字母”、“数字”和“横线”之外的所有奇怪符号！
+# 1. 强力剔除可能存在的 HTML 转义序列 (如 &quot; &#39; &amp;)
+clean_slug = re.sub(r'&[a-z0-9#]+;', '', raw_slug.lower())
+# 2. 兜底逻辑：无情抹杀除小写字母、数字、横线以外的所有残余符号（如引号实体的残余）
 slug = re.sub(r'[^a-z0-9\-]', '', clean_slug)
 
 # 提取纯文本摘要，用于卡片预览
