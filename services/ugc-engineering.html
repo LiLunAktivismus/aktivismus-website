@@ -403,157 +403,99 @@
     </style>
 </head>
 <body>
-
-    <section class="subpage-hero">
-        <span class="breadcrumb">Service / Core Capability</span>
-        <h1>UGC Ecosystem Engineering: <br> Authentic Content, Engineered to Scale.</h1>
-        <p>Move beyond the "one-off" post. Traditional UGC is unpredictable and fragmented. We engineer a self-sustaining ecosystem of creators and influencers that feeds your marketing funnel with thousands of authentic, high-conversion visual stories every month.</p>
-        <button class="cta-btn-main">Talk to an Architect</button>
-    </section>
-
-    <section class="subpage-section" style="padding-top: 0;">
-        <div class="results-banner">
-            <div class="result-item">
-                <strong>1000+</strong>
-                <span>Creators in our network</span>
-            </div>
-            <div class="result-item">
-                <strong>20M+</strong>
-                <span>Combined follower base</span>
-            </div>
-            <div class="result-item">
-                <strong>15 days</strong>
-                <span>Average delivery period</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="subpage-section bg-darker">
-        <div class="two-column-wrapper">
-            <div class="content-text">
-                <h2>Authenticity at Industrial Speed.</h2>
-                <p>The modern consumer ignores polished ads; they crave the "messy" reality of peer-to-peer recommendation. However, managing hundreds of creators manually is an operational nightmare.</p>
-                <p>We manage the end-to-end lifecycle of UGC, utilizing a systematic approach to handle everything from creative briefing to final asset curation. By mobilizing a decentralized army of creators across the US, Europe, and Southeast Asia, we ensure your brand has a constant stream of fresh, platform-native content that feels real, because it is.</p>
-                <ul class="content-list">
-                    <li>AI-powered Data-driven Creator Matchmaking: Aligning your brand with the right personas.</li>
-                    <li>Performance-First Briefing: Data-backed scripts that guarantee high engagement.</li>
-                    <li>Rights-Ready Library: Instant access to 100% commercially cleared assets.</li>
-                </ul>
-            </div>
-            <div class="content-visual">
-                <span style="opacity: 0.5;">[Workflow Diagram / UI Mockup]</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="subpage-section">
-        <div class="two-column-wrapper reverse">
-            <div class="content-text">
-                <h2>Turning Raw Stories into Revenue Machines.</h2>
-                <p>Raw UGC is only the beginning. Our engineering team treats every creator submission as a "data point." We analyze which hooks, aesthetics, and backgrounds resonate most with your audience.</p>
-
-                <p>This feedback loop allows us to continuously refine the creative briefs we send back to the ecosystem, creating a "flywheel effect" where the content becomes more effective with every iteration.</p>
-                <a href="#" style="color: var(--accent-color); font-weight: bold; margin-top: 15px; display: inline-block;">Explore AI Distribution →</a>
-            </div>
-            <div class="content-visual" style="border-style: dashed; background: transparent;">
-                <span style="opacity: 0.5;">[Dashboard Integration Visual]</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="subpage-section bg-darker">
-        <div class="feature-grid-container">
-            <div class="feature-grid-header">
-                <h2>How It Works</h2>
-                <p style="color: var(--text-secondary);">A systematic approach to predictable creativity.</p>
-            </div>
-            <div class="grid-3">
-                <div class="feature-card">
-                    <div class="feature-icon">🧠</div>
-                    <h3>1. Ecosystem Strategy & Persona Design</h3>
-                    <p>We define the "Creator Archetypes" that resonate with your brand. Our team builds a tailored ecosystem of hundreds of nano and micro-influencers who live and breathe your product's niche.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>2. Distributed Content Mining</h3>
-                    <p>Utilizing high-compute clusters, we generate variations tailored for different aspect ratios, platforms (TikTok, Meta, Shopify), and localizations.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>3. Performance Filtering & Curation</h3>
-                    <p>Not all UGC is equal. We filter every submission through our rigorous quality gate, stripping away low-engagement and non-compliant content. By selecting only the most impactful, brand-aligned assets, we ensure that only top-tier content is pushed through your Matrix Distribution or utilized as high-performing ad creatives.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="bottom-cta">
-        <h2>Ready to let creators talk about your brand?</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1.1rem;">Stop paying for hours. Start investing in algorithms.</p>
-        <button class="cta-btn-main">Schedule a Discovery Call</button>
-    </section>
-
-    <footer>
-        <div>&copy; 2025 Aktivismus Limited. All Rights Reserved.</div>
-        <div>
-            <a href="/t&c.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/t&c.html">Terms of Service</a>
-        </div>
-    </footer>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuToggle = document.getElementById('menu-toggle');
-            const mainNav = document.getElementById('main-nav');
-            const langLinks = document.querySelectorAll('#lang-switch-group a');
-            const navLinks = mainNav.querySelectorAll('a');
-
-            // 1. 移动端菜单切换逻辑
-            menuToggle.addEventListener('click', () => {
-                mainNav.classList.toggle('open');
-                menuToggle.classList.toggle('open');
-                
-                // 确保在菜单打开时，body 不滚动
-                if (mainNav.classList.contains('open')) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = '';
-                }
-            });
-
-            // 2. 点击导航链接后关闭菜单（仅限移动端）
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    // 检查是否是窄屏模式 (768px 是 CSS 中的断点)
-                    if (window.innerWidth <= 768) {
-                        mainNav.classList.remove('open');
-                        menuToggle.classList.remove('open');
-                        document.body.style.overflow = '';
-                    }
-                });
-            });
-
-            // 3. 语言切换逻辑
-            langLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault(); // 阻止默认跳转
-
-                    const targetLang = link.getAttribute('data-lang');
-
-                    // 移除所有链接的 current 类，并添加到当前点击的链接
-                    langLinks.forEach(l => l.classList.remove('current'));
-                    link.classList.add('current');
-
-                    // 切换 HTML 标签的 lang 属性
-                    document.documentElement.lang = targetLang;
-
-                    // 可以在这里添加代码来加载/切换实际的中文/英文内容
-                    // console.log('Current language switched to:', targetLang);
-                });
-            });
-        });
-    </script>
-
     <script src="/header-loader.js"></script>
+    <main>
+        <section class="subpage-hero">
+            <span class="breadcrumb">Service / Core Capability</span>
+            <h1>UGC Ecosystem Engineering: <br> Authentic Content, Engineered to Scale.</h1>
+            <p>Move beyond the "one-off" post. Traditional UGC is unpredictable and fragmented. We engineer a self-sustaining ecosystem of creators and influencers that feeds your marketing funnel with thousands of authentic, high-conversion visual stories every month.</p>
+            <button class="cta-btn-main">Talk to an Architect</button>
+        </section>
+
+        <section class="subpage-section" style="padding-top: 0;">
+            <div class="results-banner">
+                <div class="result-item">
+                    <strong>1000+</strong>
+                    <span>Creators in our network</span>
+                </div>
+                <div class="result-item">
+                    <strong>20M+</strong>
+                    <span>Combined follower base</span>
+                </div>
+                <div class="result-item">
+                    <strong>15 days</strong>
+                    <span>Average delivery period</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="subpage-section bg-darker">
+            <div class="two-column-wrapper">
+                <div class="content-text">
+                    <h2>Authenticity at Industrial Speed.</h2>
+                    <p>The modern consumer ignores polished ads; they crave the "messy" reality of peer-to-peer recommendation. However, managing hundreds of creators manually is an operational nightmare.</p>
+                    <p>We manage the end-to-end lifecycle of UGC, utilizing a systematic approach to handle everything from creative briefing to final asset curation. By mobilizing a decentralized army of creators across the US, Europe, and Southeast Asia, we ensure your brand has a constant stream of fresh, platform-native content that feels real, because it is.</p>
+                    <ul class="content-list">
+                        <li>AI-powered Data-driven Creator Matchmaking: Aligning your brand with the right personas.</li>
+                        <li>Performance-First Briefing: Data-backed scripts that guarantee high engagement.</li>
+                        <li>Rights-Ready Library: Instant access to 100% commercially cleared assets.</li>
+                    </ul>
+                </div>
+                <div class="content-visual">
+                    <span style="opacity: 0.5;">[Workflow Diagram / UI Mockup]</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="subpage-section">
+            <div class="two-column-wrapper reverse">
+                <div class="content-text">
+                    <h2>Turning Raw Stories into Revenue Machines.</h2>
+                    <p>Raw UGC is only the beginning. Our engineering team treats every creator submission as a "data point." We analyze which hooks, aesthetics, and backgrounds resonate most with your audience.</p>
+
+                    <p>This feedback loop allows us to continuously refine the creative briefs we send back to the ecosystem, creating a "flywheel effect" where the content becomes more effective with every iteration.</p>
+                    <a href="#" style="color: var(--accent-color); font-weight: bold; margin-top: 15px; display: inline-block;">Explore AI Distribution →</a>
+                </div>
+                <div class="content-visual" style="border-style: dashed; background: transparent;">
+                    <span style="opacity: 0.5;">[Dashboard Integration Visual]</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="subpage-section bg-darker">
+            <div class="feature-grid-container">
+                <div class="feature-grid-header">
+                    <h2>How It Works</h2>
+                    <p style="color: var(--text-secondary);">A systematic approach to predictable creativity.</p>
+                </div>
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>1. Ecosystem Strategy & Persona Design</h3>
+                        <p>We define the "Creator Archetypes" that resonate with your brand. Our team builds a tailored ecosystem of hundreds of nano and micro-influencers who live and breathe your product's niche.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>2. Distributed Content Mining</h3>
+                        <p>Utilizing high-compute clusters, we generate variations tailored for different aspect ratios, platforms (TikTok, Meta, Shopify), and localizations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>3. Performance Filtering & Curation</h3>
+                        <p>Not all UGC is equal. We filter every submission through our rigorous quality gate, stripping away low-engagement and non-compliant content. By selecting only the most impactful, brand-aligned assets, we ensure that only top-tier content is pushed through your Matrix Distribution or utilized as high-performing ad creatives.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bottom-cta">
+            <h2>Ready to let creators talk about your brand?</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1.1rem;">Stop paying for hours. Start investing in algorithms.</p>
+            <button class="cta-btn-main" onclick="openContactForm()">Schedule a Discovery Call</button>
+        </section>
+
+    </main>
+
 
 </body>
 </html>

@@ -402,157 +402,101 @@
     </style>
 </head>
 <body>
-
-
-    <section class="subpage-hero">
-        <span class="breadcrumb">Service / Core Capability</span>
-        <h1>Matrix Distribution & Management: Dominate the Algorithm.</h1>
-        <p>Break the visibility ceiling. Producing high-quality content is only half the battle. Our Matrix Distribution engine automates the deployment of your assets across hundreds of accounts simultaneously, ensuring your brand stays at the forefront of the feed without the overhead of a massive social team.</p>
-        <button class="cta-btn-main">Talk to an Architect</button>
-    </section>
-
-    <section class="subpage-section" style="padding-top: 0;">
-        <div class="results-banner">
-            <div class="result-item">
-                <strong>500%</strong>
-                <span>Increase in Organic Reach</span>
-            </div>
-            <div class="result-item">
-                <strong>-80%</strong>
-                <span>Manual Management Overhead</span>
-            </div>
-            <div class="result-item">
-                <strong>24/7</strong>
-                <span>Algorithmic Presence</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="subpage-section bg-darker">
-        <div class="two-column-wrapper">
-            <div class="content-text">
-                <h2>Scale Beyond Human Limits.</h2>
-                <p>Manual social media operation has hit a wall. In an era where algorithms evolve by the second, managing accounts one by one is no longer a viable strategy—it’s a bottleneck that leaks reach and revenue.<br> <br> 
-                We’ve replaced this fragmented struggle with Matrix Saturation. By moving from isolated posts to a coordinated swarm of high-authority accounts, your brand doesn't just "participate" in social trends; it engineers them.
-                <ul class="content-list">
-                    <li>Automated Account Warming: Algorithmic preparation for peak engagement.</li>
-                    <li>Platform-Native Localization: Adjusting metadata and hooks for US or EU markets.</li>
-                    <li> Shadowban Protection: Intelligent IP and device fingerprint management.</li>
-                </ul>
-            </div>
-            <div class="content-visual">
-                <span style="opacity: 0.5;">[Workflow Diagram / UI Mockup]</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="subpage-section">
-        <div class="two-column-wrapper reverse">
-            <div class="content-text">
-                <h2>Data-Driven Performance, Refined in Real-Time.</h2>
-                <p>We don't believe in "post and pray." Our management dashboard integrates directly with platform APIs to provide a unified view of your entire matrix. By analyzing performance data across thousands of posts, we identify high-converting "winner" creatives and instantly re-distribute variations to double down on what works.</p>
-                <a href="#" style="color: var(--accent-color); font-weight: bold; margin-top: 15px; display: inline-block;">Explore AI Distribution →</a>
-            </div>
-            <div class="content-visual" style="border-style: dashed; background: transparent;">
-                <span style="opacity: 0.5;">[Dashboard Integration Visual]</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="subpage-section bg-darker">
-        <div class="feature-grid-container">
-            <div class="feature-grid-header">
-                <h2>How It Works</h2>
-                <p style="color: var(--text-secondary);">A systematic approach to predictable creativity.</p>
-            </div>
-            <div class="grid-3">
-                <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
-                    <h3>1. Matrix Architecture & Setup</h3>
-                    <p>We design a custom account cluster strategy tailored to your target markets (TikTok Shop, Reels, etc.), handling everything from secure account provisioning to persona alignment.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>2. Algorithmic Deployment Pipeline</h3>
-                    <p>Our system schedules and publishes content based on high-traffic windows and platform-specific algorithm triggers. Each asset is uniquely hashed to ensure maximum organic push.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>3. Data-Driven Scaling & Iteration</h3>
-                    <p>Our team monitors the matrix performance on a daily basis. Once a "winner" creative is identified, we analyze its viral DNA and generate refined "lookalike" variations. These optimized iterations are redistributed back into the matrix to compound the original success and scale your views predictably.
-</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="bottom-cta">
-        <h2>Ready to Dominate the Algorithm?</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1.1rem;">Stop paying for hours. Start investing in algorithms.</p>
-        <button class="cta-btn-main">Schedule a Discovery Call</button>
-    </section>
-
-    <footer>
-        <div>&copy; 2025 Aktivismus Limited. All Rights Reserved.</div>
-        <div>
-            <a href="/t&c.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/t&c.html">Terms of Service</a>
-        </div>
-    </footer>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuToggle = document.getElementById('menu-toggle');
-            const mainNav = document.getElementById('main-nav');
-            const langLinks = document.querySelectorAll('#lang-switch-group a');
-            const navLinks = mainNav.querySelectorAll('a');
-
-            // 1. 移动端菜单切换逻辑
-            menuToggle.addEventListener('click', () => {
-                mainNav.classList.toggle('open');
-                menuToggle.classList.toggle('open');
-                
-                // 确保在菜单打开时，body 不滚动
-                if (mainNav.classList.contains('open')) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = '';
-                }
-            });
-
-            // 2. 点击导航链接后关闭菜单（仅限移动端）
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    // 检查是否是窄屏模式 (768px 是 CSS 中的断点)
-                    if (window.innerWidth <= 768) {
-                        mainNav.classList.remove('open');
-                        menuToggle.classList.remove('open');
-                        document.body.style.overflow = '';
-                    }
-                });
-            });
-
-            // 3. 语言切换逻辑
-            langLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault(); // 阻止默认跳转
-
-                    const targetLang = link.getAttribute('data-lang');
-
-                    // 移除所有链接的 current 类，并添加到当前点击的链接
-                    langLinks.forEach(l => l.classList.remove('current'));
-                    link.classList.add('current');
-
-                    // 切换 HTML 标签的 lang 属性
-                    document.documentElement.lang = targetLang;
-
-                    // 可以在这里添加代码来加载/切换实际的中文/英文内容
-                    // console.log('Current language switched to:', targetLang);
-                });
-            });
-        });
-    </script>
-
     <script src="/header-loader.js"></script>
+    
+    <main>
+
+        <section class="subpage-hero">
+            <span class="breadcrumb">Service / Core Capability</span>
+            <h1>Matrix Distribution & Management: Dominate the Algorithm.</h1>
+            <p>Break the visibility ceiling. Producing high-quality content is only half the battle. Our Matrix Distribution engine automates the deployment of your assets across hundreds of accounts simultaneously, ensuring your brand stays at the forefront of the feed without the overhead of a massive social team.</p>
+            <button class="cta-btn-main">Talk to an Architect</button>
+        </section>
+
+        <section class="subpage-section" style="padding-top: 0;">
+            <div class="results-banner">
+                <div class="result-item">
+                    <strong>500%</strong>
+                    <span>Increase in Organic Reach</span>
+                </div>
+                <div class="result-item">
+                    <strong>-80%</strong>
+                    <span>Manual Management Overhead</span>
+                </div>
+                <div class="result-item">
+                    <strong>24/7</strong>
+                    <span>Algorithmic Presence</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="subpage-section bg-darker">
+            <div class="two-column-wrapper">
+                <div class="content-text">
+                    <h2>Scale Beyond Human Limits.</h2>
+                    <p>Manual social media operation has hit a wall. In an era where algorithms evolve by the second, managing accounts one by one is no longer a viable strategy—it’s a bottleneck that leaks reach and revenue.<br> <br> 
+                    We’ve replaced this fragmented struggle with Matrix Saturation. By moving from isolated posts to a coordinated swarm of high-authority accounts, your brand doesn't just "participate" in social trends; it engineers them.
+                    <ul class="content-list">
+                        <li>Automated Account Warming: Algorithmic preparation for peak engagement.</li>
+                        <li>Platform-Native Localization: Adjusting metadata and hooks for US or EU markets.</li>
+                        <li> Shadowban Protection: Intelligent IP and device fingerprint management.</li>
+                    </ul>
+                </div>
+                <div class="content-visual">
+                    <span style="opacity: 0.5;">[Workflow Diagram / UI Mockup]</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="subpage-section">
+            <div class="two-column-wrapper reverse">
+                <div class="content-text">
+                    <h2>Data-Driven Performance, Refined in Real-Time.</h2>
+                    <p>We don't believe in "post and pray." Our management dashboard integrates directly with platform APIs to provide a unified view of your entire matrix. By analyzing performance data across thousands of posts, we identify high-converting "winner" creatives and instantly re-distribute variations to double down on what works.</p>
+                    <a href="#" style="color: var(--accent-color); font-weight: bold; margin-top: 15px; display: inline-block;">Explore AI Distribution →</a>
+                </div>
+                <div class="content-visual" style="border-style: dashed; background: transparent;">
+                    <span style="opacity: 0.5;">[Dashboard Integration Visual]</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="subpage-section bg-darker">
+            <div class="feature-grid-container">
+                <div class="feature-grid-header">
+                    <h2>How It Works</h2>
+                    <p style="color: var(--text-secondary);">A systematic approach to predictable creativity.</p>
+                </div>
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">🌐</div>
+                        <h3>1. Matrix Architecture & Setup</h3>
+                        <p>We design a custom account cluster strategy tailored to your target markets (TikTok Shop, Reels, etc.), handling everything from secure account provisioning to persona alignment.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>2. Algorithmic Deployment Pipeline</h3>
+                        <p>Our system schedules and publishes content based on high-traffic windows and platform-specific algorithm triggers. Each asset is uniquely hashed to ensure maximum organic push.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>3. Data-Driven Scaling & Iteration</h3>
+                        <p>Our team monitors the matrix performance on a daily basis. Once a "winner" creative is identified, we analyze its viral DNA and generate refined "lookalike" variations. These optimized iterations are redistributed back into the matrix to compound the original success and scale your views predictably.
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bottom-cta">
+            <h2>Ready to Dominate the Algorithm?</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1.1rem;">Stop paying for hours. Start investing in algorithms.</p>
+            <button class="cta-btn-main" onclick="openContactForm()">Schedule a Discovery Call</button>
+        </section>
+
+    </main>
+
+    
     
 </body>
 </html>

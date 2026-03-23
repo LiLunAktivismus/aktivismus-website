@@ -402,160 +402,101 @@
     </style>
 </head>
 <body>
-
-    <section class="subpage-hero">
-        <span class="breadcrumb">Service / Core Capability</span>
-        <h1>TikTok Growth Consulting: <br> Leveraging the cheapest traffic entrance, more than you expected. </h1>
-        <p>Don't just chase trends. Capitalize on them. TikTok success isn’t about guessing; it’s about rapid execution and deep market insight. We provide the strategic blueprints and full-service operations needed to turn the world’s most cost-effective traffic source into a high-performance growth engine that consistently exceeds expectations.</p>
-        <button class="cta-btn-main">Talk to an Architect</button>
-    </section>
-
-    <section class="subpage-section" style="padding-top: 0;">
-        <div class="results-banner">
-            <div class="result-item">
-                <strong>10x</strong>
-                <span>Faster Production Cycle</span>
-            </div>
-            <div class="result-item">
-                <strong>-60%</strong>
-                <span>Cost Per Asset (CPA)</span>
-            </div>
-            <div class="result-item">
-                <strong>100%</strong>
-                <span>Brand Consistency</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="subpage-section bg-darker">
-        <div class="two-column-wrapper">
-            <div class="content-text">
-                <h2>Strategic Consulting: Global vision. Local precision.</h2>
-                <p>Success in the US, Europe, and Southeast Asia requires more than just re-uploading content; it requires a deep understanding of local algorithm nuances and e-commerce consumer behavior.</p>
-                <p>Our consulting is battle-tested—built on real-time data from our own high-volume content production and matrix distribution. We help you build account authority, identify high-potential niche movements, and scale across regions to ensure your brand stays at the forefront of the growth curve.</p>
-                <ul class="content-list">
-                    <li>Cross-Regional Market Analysis: Tailored strategies for seamless global expansion.</li>
-                    <li>Human/AI Creator Matrix Strategy: Building high-authority, secure brand portfolios.</li>
-                    <li>Real-time Trend Capture: Identifying and leveraging viral shifts as they emerge.</li>
-                </ul>
-            </div>
-            <div class="content-visual">
-                <span style="opacity: 0.5;">[Workflow Diagram / UI Mockup]</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="subpage-section">
-        <div class="two-column-wrapper reverse">
-            <div class="content-text">
-                <h2>From reach to revenue: Seamlessly managed.</h2>
-                <p>We aren't just advisors; we are your boots on the ground. Our operational team handles the heavy lifting, transforming brand strategy into daily high-impact execution—from account management to TikTok Shop conversion.</p>
-                <p>By integrating data-driven TikTok Ads management with meticulous shop optimization, we eliminate the gap between "getting views" and "making sales." This is the expert-led execution that turns social media into a predictable, scalable, and profitable sales channel.</p>
-                 <ul class="content-list">
-                    <li>Full Account Management: Content planning, follower growth, and high-frequency engagement.</li>
-                    <li>TikTok Shop Operations: Maximizing conversion rates, store ratings, and repeat purchases.</li>
-                    <li>TikTok Paid Ads Marketing: Data-driven performance marketing to maximize your ROI.</li>
-                </ul>
-            </div>
-            <div class="content-visual" style="border-style: dashed; background: transparent;">
-                <span style="opacity: 0.5;">[Dashboard Integration Visual]</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="subpage-section bg-darker">
-        <div class="feature-grid-container">
-            <div class="feature-grid-header">
-                <h2>How It Works</h2>
-                <p style="color: var(--text-secondary);">A systematic approach to predictable creativity.</p>
-            </div>
-            <div class="grid-3">
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3>1. Strategic Audit & Market Blueprinting</h3>
-                    <p>We perform a deep dive into your brand’s current digital footprint, target demographics, and regional competition. Our team identifies untapped growth opportunities and designs a comprehensive strategic blueprint—from account structure to content pillars—tailored to your specific expansion goals.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>2. Operational Onboarding & Campaign Launch </h3>
-                    <p>We move from strategy to action. Our experts handle the full setup of your TikTok accounts and Shop infrastructure, integrating our proven operational workflows with your brand identity. We launch your first wave of high-impact content and paid ads, ensuring a seamless entry into the global algorithm.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>3. Performance Optimization & Scaling Support </h3>
-                    <p>TikTok’s algorithm never stops evolving, and neither do we. We provide ongoing strategic oversight, real-time data analysis, and creative pivots based on emerging trends. By continuously refining your Shop conversion and ad performance, we ensure your brand scales predictably and profitably across all target markets.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="bottom-cta">
-        <h2>Ready to Scale Your Content Engine?</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1.1rem;">Stop paying for hours. Start investing in algorithms.</p>
-        <button class="cta-btn-main">Schedule a Discovery Call</button>
-    </section>
-
-    <footer>
-        <div>&copy; 2025 Aktivismus Limited. All Rights Reserved.</div>
-        <div>
-            <a href="/t&c.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/t&c.html">Terms of Service</a>
-        </div>
-    </footer>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuToggle = document.getElementById('menu-toggle');
-            const mainNav = document.getElementById('main-nav');
-            const langLinks = document.querySelectorAll('#lang-switch-group a');
-            const navLinks = mainNav.querySelectorAll('a');
-
-            // 1. 移动端菜单切换逻辑
-            menuToggle.addEventListener('click', () => {
-                mainNav.classList.toggle('open');
-                menuToggle.classList.toggle('open');
-                
-                // 确保在菜单打开时，body 不滚动
-                if (mainNav.classList.contains('open')) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = '';
-                }
-            });
-
-            // 2. 点击导航链接后关闭菜单（仅限移动端）
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    // 检查是否是窄屏模式 (768px 是 CSS 中的断点)
-                    if (window.innerWidth <= 768) {
-                        mainNav.classList.remove('open');
-                        menuToggle.classList.remove('open');
-                        document.body.style.overflow = '';
-                    }
-                });
-            });
-
-            // 3. 语言切换逻辑
-            langLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault(); // 阻止默认跳转
-
-                    const targetLang = link.getAttribute('data-lang');
-
-                    // 移除所有链接的 current 类，并添加到当前点击的链接
-                    langLinks.forEach(l => l.classList.remove('current'));
-                    link.classList.add('current');
-
-                    // 切换 HTML 标签的 lang 属性
-                    document.documentElement.lang = targetLang;
-
-                    // 可以在这里添加代码来加载/切换实际的中文/英文内容
-                    // console.log('Current language switched to:', targetLang);
-                });
-            });
-        });
-    </script>
-
     <script src="/header-loader.js"></script>
+
+    <main>
+        <section class="subpage-hero">
+            <span class="breadcrumb">Service / Core Capability</span>
+            <h1>TikTok Growth Consulting: <br> Leveraging the cheapest traffic entrance, more than you expected. </h1>
+            <p>Don't just chase trends. Capitalize on them. TikTok success isn’t about guessing; it’s about rapid execution and deep market insight. We provide the strategic blueprints and full-service operations needed to turn the world’s most cost-effective traffic source into a high-performance growth engine that consistently exceeds expectations.</p>
+            <button class="cta-btn-main">Talk to an Architect</button>
+        </section>
+
+        <section class="subpage-section" style="padding-top: 0;">
+            <div class="results-banner">
+                <div class="result-item">
+                    <strong>10x</strong>
+                    <span>Faster Production Cycle</span>
+                </div>
+                <div class="result-item">
+                    <strong>-60%</strong>
+                    <span>Cost Per Asset (CPA)</span>
+                </div>
+                <div class="result-item">
+                    <strong>100%</strong>
+                    <span>Brand Consistency</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="subpage-section bg-darker">
+            <div class="two-column-wrapper">
+                <div class="content-text">
+                    <h2>Strategic Consulting: Global vision. Local precision.</h2>
+                    <p>Success in the US, Europe, and Southeast Asia requires more than just re-uploading content; it requires a deep understanding of local algorithm nuances and e-commerce consumer behavior.</p>
+                    <p>Our consulting is battle-tested—built on real-time data from our own high-volume content production and matrix distribution. We help you build account authority, identify high-potential niche movements, and scale across regions to ensure your brand stays at the forefront of the growth curve.</p>
+                    <ul class="content-list">
+                        <li>Cross-Regional Market Analysis: Tailored strategies for seamless global expansion.</li>
+                        <li>Human/AI Creator Matrix Strategy: Building high-authority, secure brand portfolios.</li>
+                        <li>Real-time Trend Capture: Identifying and leveraging viral shifts as they emerge.</li>
+                    </ul>
+                </div>
+                <div class="content-visual">
+                    <span style="opacity: 0.5;">[Workflow Diagram / UI Mockup]</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="subpage-section">
+            <div class="two-column-wrapper reverse">
+                <div class="content-text">
+                    <h2>From reach to revenue: Seamlessly managed.</h2>
+                    <p>We aren't just advisors; we are your boots on the ground. Our operational team handles the heavy lifting, transforming brand strategy into daily high-impact execution—from account management to TikTok Shop conversion.</p>
+                    <p>By integrating data-driven TikTok Ads management with meticulous shop optimization, we eliminate the gap between "getting views" and "making sales." This is the expert-led execution that turns social media into a predictable, scalable, and profitable sales channel.</p>
+                    <ul class="content-list">
+                        <li>Full Account Management: Content planning, follower growth, and high-frequency engagement.</li>
+                        <li>TikTok Shop Operations: Maximizing conversion rates, store ratings, and repeat purchases.</li>
+                        <li>TikTok Paid Ads Marketing: Data-driven performance marketing to maximize your ROI.</li>
+                    </ul>
+                </div>
+                <div class="content-visual" style="border-style: dashed; background: transparent;">
+                    <span style="opacity: 0.5;">[Dashboard Integration Visual]</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="subpage-section bg-darker">
+            <div class="feature-grid-container">
+                <div class="feature-grid-header">
+                    <h2>How It Works</h2>
+                    <p style="color: var(--text-secondary);">A systematic approach to predictable creativity.</p>
+                </div>
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>1. Strategic Audit & Market Blueprinting</h3>
+                        <p>We perform a deep dive into your brand’s current digital footprint, target demographics, and regional competition. Our team identifies untapped growth opportunities and designs a comprehensive strategic blueprint—from account structure to content pillars—tailored to your specific expansion goals.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>2. Operational Onboarding & Campaign Launch </h3>
+                        <p>We move from strategy to action. Our experts handle the full setup of your TikTok accounts and Shop infrastructure, integrating our proven operational workflows with your brand identity. We launch your first wave of high-impact content and paid ads, ensuring a seamless entry into the global algorithm.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>3. Performance Optimization & Scaling Support </h3>
+                        <p>TikTok’s algorithm never stops evolving, and neither do we. We provide ongoing strategic oversight, real-time data analysis, and creative pivots based on emerging trends. By continuously refining your Shop conversion and ad performance, we ensure your brand scales predictably and profitably across all target markets.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bottom-cta">
+            <h2>Ready to Scale Your Content Engine?</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1.1rem;">Stop paying for hours. Start investing in algorithms.</p>
+            <button class="cta-btn-main" onclick="openContactForm()">Schedule a Discovery Call</button>
+        </section>
+    </main>
 
 </body>
 </html>
