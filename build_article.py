@@ -85,7 +85,7 @@ with open(file_path, "w", encoding="utf-8") as f:
     f.write(final_html)
 
 # ==========================================
-# 3. 自动更新 insights.html 的列表页
+# 3. 自动更新 insights.html 的列表页 (彻底抛弃隐形暗号的防弹版)
 # ==========================================
 hub_path = "insights.html"
 if os.path.exists(hub_path):
@@ -101,9 +101,12 @@ if os.path.exists(hub_path):
             <div class="read-more">Read More →</div>
         </a>"""
     
-    marker = ""
-    if marker in hub_content:
-        hub_content = hub_content.replace(marker, f'{marker}\n{new_card}'，1)
+    # 👇 核心改变：直接用网页里天然存在的原生 HTML 标签作为定位器！
+    target_tag = '<section class="insights-grid auto-section" id="auto-article-grid">'
+    
+    if target_tag in hub_content:
+        # 找到这个大门后，把它替换为【大门本身 + 换行 + 新卡片】
+        hub_content = hub_content.replace(target_tag, f'{target_tag}\n{new_card}', 1)
         with open(hub_path, "w", encoding="utf-8") as f:
             f.write(hub_content)
 
