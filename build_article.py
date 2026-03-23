@@ -111,7 +111,7 @@ if os.path.exists(hub_path):
     new_card = f"""
         <a href="/{file_path}" class="insight-card auto-card">
             <div class="card-meta"><span>{tag}</span><span>{date_str}</span></div>
-            <div class="card-img-placeholder" style="background-image:url('{local_image_path}'); background-size:cover; background-position:center;"></div>
+            <div class="card-img-placeholder" style="background-image: url('{local_image_path}'); background-size: cover; background-position: center; border: none;"></div>
             <h3>{title}</h3>
             <p>{snippet}</p>
             <div class="read-more">Read More →</div>
