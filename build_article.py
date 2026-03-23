@@ -31,47 +31,56 @@ slug = re.sub(r'[^a-z0-9\-]', '', clean_slug)
 snippet = content.replace("<br><br>", " ").replace("&quot;", '"').replace("\\\\", "\\")[:120] + "..."
 
 # ==========================================
-# 🚀 核心新功能：飞书图片全自动下载器
+# 🚀 核心修复：飞书私有链接下载器
 # ==========================================
-local_image_path = "https://via.placeholder.com/800x400" # 兜底假图
+local_image_path = "https://via.placeholder.com/800x400" 
 APP_ID = os.environ.get('FEISHU_APP_ID')
 APP_SECRET = os.environ.get('FEISHU_APP_SECRET')
 
 if APP_ID and APP_SECRET and image_raw:
     try:
-        # 直接把传过来的字符串当做 file_token
-        file_token = image_raw.strip()
-        print(f"Detected file_token: {file_token}, attempting download...")
-
-        # 用钥匙去飞书换取 Tenant Access Token
-        auth_res = requests.post(
-            "https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal",
-            json={"app_id": APP_ID, "app_secret": APP_SECRET}
-        ).json()
-        
-        if auth_res.get("code") == 0:
-            tenant_token = auth_res["tenant_access_token"]
-            
-            # 下载真正的图片流文件
-            download_url = f"https://open.feishu.cn/open-apis/drive/v1/medias/{file_token}/download"
-            img_res = requests.get(download_url, headers={"Authorization": f"Bearer {tenant_token}"})
-            
-            if img_res.status_code == 200:
-                # 把图片存入你网站的 assets/images 文件夹
-                os.makedirs('assets/images', exist_ok=True)
-                save_path = f"assets/images/{slug}.png"
-                with open(save_path, "wb") as f:
-                    f.write(img_res.content)
-                
-                # 把网页模板里的图片链接，替换为你自己的本地链接！
-                local_image_path = f"/{save_path}"
-                print(f"✅ Image successfully downloaded to: {local_image_path}")
-            else:
-                print(f"❌ Failed to download image from Feishu: {img_res.text}")
+        # 1. 从长链接中提取 File Token
+        # 你的链接中，Token 通常在 /download/all/ 之后，下一个斜杠之前
+        file_token = ""
+        if "download/all/" in image_raw:
+            file_token = image_raw.split("download/all/")[1].split("/")[0]
         else:
-            print(f"❌ Failed to get tenant token: {auth_res}")
+            # 如果传过来的是纯 Token，则直接使用
+            file_token = image_raw.strip()
+
+        if file_token:
+            print(f"🔄 Attempting to download file_token: {file_token}")
+
+            # 2. 获取 Tenant Access Token (拿钥匙)
+            auth_res = requests.post(
+                "https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal",
+                json={"app_id": APP_ID, "app_secret": APP_SECRET}
+            ).json()
+            
+            if auth_res.get("code") == 0:
+                tenant_token = auth_res["tenant_access_token"]
+                
+                # 3. 使用标准 API 下载文件流
+                # 注意：不要直接请求你那个长链接，要请求飞书的 OpenAPI 接口
+                download_url = f"https://open.feishu.cn/open-apis/drive/v1/medias/{file_token}/download"
+                img_res = requests.get(
+                    download_url, 
+                    headers={"Authorization": f"Bearer {tenant_token}"}
+                )
+                
+                if img_res.status_code == 200:
+                    os.makedirs('assets/images', exist_ok=True)
+                    # 使用 slug 命名图片，确保唯一性
+                    save_path = f"assets/images/{slug}.png"
+                    with open(save_path, "wb") as f:
+                        f.write(img_res.content)
+                    
+                    local_image_path = f"/{save_path}"
+                    print(f"✅ Image downloaded: {local_image_path}")
+                else:
+                    print(f"❌ API Download failed. Status: {img_res.status_code}")
     except Exception as e:
-        print(f"⚠️ Error processing image download: {e}")
+        print(f"⚠️ Image processing error: {e}")
 
 # ==========================================
 # 2. 生成单篇文章 HTML (读取模板并替换)
