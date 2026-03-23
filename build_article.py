@@ -103,7 +103,7 @@ if os.path.exists(hub_path):
     
     marker = ""
     if marker in hub_content:
-        hub_content = hub_content.replace(marker, f'{marker}\n{new_card}')
+        hub_content = hub_content.replace(marker, f'{marker}\n{new_card}'，1)
         with open(hub_path, "w", encoding="utf-8") as f:
             f.write(hub_content)
 
