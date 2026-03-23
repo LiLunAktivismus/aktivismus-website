@@ -15,10 +15,18 @@ except Exception:
 
 title = payload.get('title') or 'System Test Article'
 content = payload.get('content') or 'This is an automated test to check if the pipeline is working.'
-slug = payload.get('slug') or f"test-article-{int(datetime.now().timestamp())}"
 tag = payload.get('tag') or 'INDUSTRY INSIGHT'
 date_str = datetime.now().strftime('%B %d, %Y')
 image_raw = payload.get('image_url', '')
+
+# Slug清洗逻辑
+raw_slug = payload.get('slug') or title
+# 先把 HTML 转义符去掉，再转换成小写
+clean_slug = raw_slug.replace('&quot;', '').replace('&#39;', '').lower()
+# 把空格替换成横线
+clean_slug = clean_slug.replace(' ', '-')
+# 使用正则：无情地抹杀掉除了“小写字母”、“数字”和“横线”之外的所有奇怪符号！
+slug = re.sub(r'[^a-z0-9\-]', '', clean_slug)
 
 # 提取纯文本摘要，用于卡片预览
 snippet = content.replace("<br><br>", " ").replace("&quot;", '"').replace("\\\\", "\\")[:120] + "..."
