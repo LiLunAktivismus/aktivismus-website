@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxtron E-Bike | Partner Portfolio</title>
+
+    <link href="https://g.alicdn.com/alifd/global-font/latest/AlibabaPuHuiTi.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #131313;
+            --card-bg: #1A1A1A;
+            --text-main: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --accent-color: #00EEFF; 
+        }
+
+        /* 强制全局应用品牌字体 */
+        body, h1, h2, h3, h4, h5, p, span, div, th, td, strong {
+            font-family: 'Alibaba PuHuiTi 3.0', 'AlibabaPuHuiTi', 'Inter', sans-serif; 
+        }
+
+        body {
+            background-color: var(--bg-color); 
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .simple-header {
+            display: flex;
+            align-items: center;
+            padding: 25px 5%;
+            background: rgba(19, 19, 19, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .cs-hero { padding: 180px 5% 80px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .cs-tags { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+        .cs-tags span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; padding: 6px 15px; border-radius: 30px; border: 1px solid rgba(0, 238, 255, 0.3); color: var(--accent-color); background: rgba(0, 238, 255, 0.05); }
+        .cs-hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 30px; background: linear-gradient(90deg, #FFFFFF, #B0B0B0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .cs-hero p { font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto; }
+
+        .catalog-container { max-width: 1200px; margin: 0 auto; padding: 0 5% 100px; }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            margin-bottom: 60px;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+        .product-card:hover { border-color: rgba(0, 238, 255, 0.3); }
+
+        .product-header {
+            display: flex;
+            padding: 40px;
+            gap: 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .product-visual {
+            flex: 1;
+            background: linear-gradient(45deg, #131313, #1A1A1A);
+            border-radius: 12px;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+        .product-visual img { width: 100%; height: 100%; object-fit: contain; }
+
+        .product-info { flex: 1.5; display: flex; flex-direction: column; justify-content: flex-start; }
+        .product-title { font-size: 2.2rem; color: #FFF; margin-bottom: 10px; line-height: 1.2; }
+        .product-model {
+            color: var(--accent-color); font-family: monospace; font-size: 1.1rem;
+            margin-bottom: 25px; display: inline-block; background: rgba(0, 238, 255, 0.1);
+            padding: 6px 14px; border-radius: 4px;
+        }
+
+        .expanded-parameters {
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px; padding: 25px; margin-bottom: 30px;
+        }
+        .expanded-parameters h4 {
+            color: var(--text-secondary); margin-bottom: 20px; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 1.5px; border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 10px; margin-top: 0;
+        }
+        .param-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .param-item span { display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 4px; }
+        .param-item strong { font-size: 1.05rem; color: #fff; font-weight: 500; }
+
+        .spec-secondary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: flex-start; }
+        .spec-item h5 {
+            color: var(--text-secondary); font-size: 0.85rem; text-transform: uppercase;
+            letter-spacing: 1px; margin-bottom: 8px; margin-top: 0;
+        }
+        .spec-item p { color: #FFF; font-size: 1.05rem; margin: 0; line-height: 1.4; }
+        
+        .color-options { display: flex; gap: 12px; flex-wrap: wrap; }
+        .color-dot { width: 24px; height: 24px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, 0.2); cursor: help;}
+
+        .data-section { padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .data-table-wrapper h4 {
+            color: var(--accent-color); margin-bottom: 20px; font-size: 1.1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-top: 0;
+        }
+        .data-table { width: 100%; border-collapse: collapse; }
+        .data-table th, .data-table td { padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); text-align: left; vertical-align: middle;}
+        .data-table th { color: var(--text-secondary); font-size: 0.85rem; font-weight: normal; }
+        .data-table td { color: #FFF; font-size: 0.95rem; }
+        .data-table tr:last-child td, .data-table tr:last-child th { border-bottom: none; }
+        
+        .highlight-price { color: var(--accent-color); font-weight: bold; font-size: 1.3rem; }
+        .original-price { color: var(--text-secondary); text-decoration: line-through; font-size: 0.9rem; margin-left: 8px; }
+
+        @media (max-width: 900px) {
+            .product-header { flex-direction: column; }
+            .data-section { grid-template-columns: 1fr; gap: 40px; padding: 20px; }
+            .param-grid { grid-template-columns: 1fr 1fr; }
+            .spec-secondary { grid-template-columns: 1fr; gap: 25px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="simple-header">
+        <a href="/index.html" class="logo-link">
+            <svg class="logo-svg" viewBox="0 0 442 106" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 40px; width: auto;">
+                <path d="M42.9189 75L41.0459 70.1501H26.5298L29.6069 61.3535H37.6343L25.7605 30.6155H40.1763L57.8699 75H42.9189ZM8.30103 75L24.155 32.6223L30.7107 50.249L22.583 75H8.30103ZM87.5469 51.128L102.907 75H87.7389L76.8589 56.568H75.1309V75H62.3949V30.584H75.1309V46.584H76.8589L87.6109 30.584H102.267L87.5469 51.128ZM137.557 30.584V41.72H126.933V75H114.261V41.72H103.701V30.584H137.557ZM143.02 75V30.584H155.756V75H143.02ZM176.175 75L160.687 30.584H174.895L184.239 61.432H184.623L194.479 30.584H207.919L191.983 75H176.175ZM212.832 75V30.584H225.568V75H212.832ZM245.988 75.64C241.06 75.64 236.324 74.936 233.188 74.168V63.224C236.132 64.056 241.316 64.888 245.284 64.888C250.596 64.888 251.3 63.992 251.3 61.24C251.3 59.384 250.468 58.296 244.9 56.952C235.172 54.712 232.868 51.64 232.868 43.768C232.868 33.272 239.652 29.944 250.276 29.944C255.844 29.944 259.3 30.712 261.796 31.544V41.72C259.94 41.016 254.372 40.184 250.852 40.184C246.756 40.184 245.156 41.144 245.156 43.256C245.156 45.304 246.116 45.752 251.62 47.16C262.692 50.04 264.036 53.56 264.036 61.624C264.036 70.456 259.748 75.64 245.988 75.64ZM271.582 75V30.584H292.382L296.734 52.856H297.118L302.046 30.584H322.078V75H309.598V42.808H309.214L302.878 67.896H290.462L284.318 42.808H283.934V75H271.582ZM350.296 75.64C337.816 75.64 330.328 72.44 330.328 59.96V30.584H343.064V59.064C343.064 61.944 344.152 64.76 350.296 64.76C356.632 64.76 357.656 61.432 357.656 59.064V30.584H370.328V59.96C370.328 71.288 362.776 75.64 350.296 75.64ZM390.613 75.64C385.685 75.64 380.949 74.936 377.813 74.168V63.224C380.757 64.056 385.941 64.888 389.909 64.888C395.221 64.888 395.925 63.992 395.925 61.24C395.925 59.384 395.093 58.296 389.525 56.952C379.797 54.712 377.493 51.64 377.493 43.768C377.493 33.272 384.277 29.944 394.901 29.944C400.469 29.944 403.925 30.712 406.421 31.544V41.72C404.565 41.016 398.997 40.184 395.477 40.184C391.381 40.184 389.781 41.144 389.781 43.256C389.781 45.304 390.741 45.752 396.245 47.16C407.317 50.04 408.661 53.56 408.661 61.624C408.661 70.456 404.373 75.64 390.613 75.64Z" fill="white"/>
+                <path d="M421.933 75.384C415.533 75.384 415.149 74.36 415.149 68.472C415.149 62.52 415.533 61.496 421.933 61.496C428.205 61.496 428.781 62.52 428.781 68.472C428.781 74.36 428.205 75.384 421.933 75.384Z" fill="#00EEFF"/>
+            </svg>
+        </a>
+    </header>
+
+    <main>
+        <section class="cs-hero">
+            <div class="cs-tags">
+                <span>Maxtron Official</span>
+                <span>B2B Direct</span>
+            </div>
+            <h1>Product & Logistics Matrix</h1>
+            <p>Exclusive catalog featuring latest models, dropshipping pricing, and European fulfillment logistics for Maxtron distribution partners.</p>
+        </section>
+
+        <section class="catalog-container">
+            
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-visual">
+                        <img src="/assets/images/Maxtron_image/Maxtron - MX10.png" alt="MX10">
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-title">Maxtron MX10</h2>
+                        <span class="product-model">MODEL: MX10</span>
+                        
+                        <div class="expanded-parameters">
+                            <h4>技术参数 (Specs)</h4>
+                            <div class="param-grid">
+                                <div class="param-item"><span>电池 (Battery)</span><strong>48V · 13.5Ah</strong></div>
+                                <div class="param-item"><span>电机 (Motor)</span><strong>500W</strong></div>
+                                <div class="param-item"><span>轮胎 (Tires)</span><strong>20 × 4.0 英寸</strong></div>
+                                <div class="param-item"><span>变速器 (Gears)</span><strong>Shimano 7 速</strong></div>
+                                <div class="param-item"><span>前叉 (Suspension)</span><strong>双铝肩铁腿避震前叉</strong></div>
+                                <div class="param-item"><span>最高时速 (Speed)</span><strong>25 km/h (欧规)</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="spec-secondary">
+                            <div class="spec-item">
+                                <h5>提供颜色 (Colors)</h5>
+                                <div class="color-options">
+                                    <div class="color-dot" style="background-color: #111;" title="黑色"></div>
+                                    <div class="color-dot" style="background-color: #0044CC;" title="蓝色"></div>
+                                    <div class="color-dot" style="background-color: #2E8B57;" title="绿色"></div>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <h5>辅助续航 (Range)</h5>
+                                <p><strong>80 - 100 km</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-section">
+                    <div class="data-table-wrapper">
+                        <h4>采购及结算价 (Pricing)</h4>
+                        <table class="data-table">
+                            <tr><th>价格类型</th><th>金额</th></tr>
+                            <tr><td>代发结算价</td><td><span class="highlight-price">€620.00</span> <span class="original-price">€690.00</span></td></tr>
+                        </table>
+                    </div>
+                    <div class="data-table-wrapper">
+                        <h4>欧洲区物流费用 (Logistics)</h4>
+                        <table class="data-table">
+                            <tr><th>发往区域</th><th>附加运费</th></tr>
+                            <tr><td>DE, AT, FR, LU, BE, NL</td><td><strong style="color:#00EEFF;">€0 (包邮)</strong></td></tr>
+                            <tr><td>DK, IT, ES, PL, CZ, SK, HU, SI</td><td><strong>+ €30</strong></td></tr>
+                            <tr><td>SE, FI, IE, PT, GR, HR, RO, BG, LT, LV, EE</td><td><strong>+ €50</strong></td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-visual">
+                        <img src="/assets/images/Maxtron_image/Maxtron - W66.png" alt="W66">
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-title">Maxtron W66</h2>
+                        <span class="product-model">MODEL: W66</span>
+                        
+                        <div class="expanded-parameters">
+                            <h4>技术参数 (Specs)</h4>
+                            <div class="param-grid">
+                                <div class="param-item"><span>电池 (Battery)</span><strong>48V · 13.5Ah</strong></div>
+                                <div class="param-item"><span>电机 (Motor)</span><strong>500W</strong></div>
+                                <div class="param-item"><span>轮胎 (Tires)</span><strong>20 × 4.0 英寸</strong></div>
+                                <div class="param-item"><span>变速器 (Gears)</span><strong>Shimano 7 速</strong></div>
+                                <div class="param-item"><span>前叉 (Suspension)</span><strong>双铝肩铁腿避震前叉</strong></div>
+                                <div class="param-item"><span>最高时速 (Speed)</span><strong>25 km/h (欧规)</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="spec-secondary">
+                            <div class="spec-item">
+                                <h5>提供颜色 (Colors)</h5>
+                                <div class="color-options">
+                                    <div class="color-dot" style="background-color: #F5DEB3;" title="米黄"></div>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <h5>辅助续航 (Range)</h5>
+                                <p><strong>80 - 100 km</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-section">
+                    <div class="data-table-wrapper">
+                        <h4>采购及结算价 (Pricing)</h4>
+                        <table class="data-table">
+                            <tr><th>价格类型</th><th>金额</th></tr>
+                            <tr><td>代发结算价</td><td><span class="highlight-price">€620.00</span> <span class="original-price">€690.00</span></td></tr>
+                        </table>
+                    </div>
+                    <div class="data-table-wrapper">
+                        <h4>欧洲区物流费用 (Logistics)</h4>
+                        <table class="data-table">
+                            <tr><th>发往区域</th><th>附加运费</th></tr>
+                            <tr><td>DE, AT, FR, LU, BE, NL</td><td><strong style="color:#00EEFF;">€0 (包邮)</strong></td></tr>
+                            <tr><td>DK, IT, ES, PL, CZ, SK, HU, SI</td><td><strong>+ €30</strong></td></tr>
+                            <tr><td>SE, FI, IE, PT, GR, HR, RO, BG, LT, LV, EE</td><td><strong>+ €50</strong></td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-visual">
+                        <img src="/assets/images/Maxtron_image/Maxtron - MX1.png">
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-title">Maxtron MX1</h2>
+                        <span class="product-model">MODEL: MX1</span>
+                        
+                        <div class="expanded-parameters">
+                            <h4>技术参数 (Specs)</h4>
+                            <div class="param-grid">
+                                <div class="param-item"><span>电池 (Battery)</span><strong>48V 13AH</strong></div>
+                                <div class="param-item"><span>电机 (Motor)</span><strong>500W</strong></div>
+                                <div class="param-item"><span>轮胎 (Tires)</span><strong>26 × 4.0 英寸</strong></div>
+                                <div class="param-item"><span>前叉 (Suspension)</span><strong>单肩铝肩铁腿避震前叉</strong></div>
+                                <div class="param-item"><span>最高时速 (Speed)</span><strong>25 km/h (欧规)</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="spec-secondary">
+                            <div class="spec-item">
+                                <h5>提供颜色 (Colors)</h5>
+                                <div class="color-options">
+                                    <div class="color-dot" style="background-color: #111;" title="黑色"></div>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <h5>辅助续航 (Range)</h5>
+                                <p><strong>80 - 100 km</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-section">
+                    <div class="data-table-wrapper">
+                        <h4>采购及结算价 (Pricing)</h4>
+                        <table class="data-table">
+                            <tr><th>价格类型</th><th>金额</th></tr>
+                            <tr><td>代发结算价</td><td><span class="highlight-price">€743.00</span></td></tr>
+                        </table>
+                    </div>
+                    <div class="data-table-wrapper">
+                        <h4>欧洲区物流费用 (Logistics)</h4>
+                        <table class="data-table">
+                            <tr><th>发往区域</th><th>附加运费</th></tr>
+                            <tr><td>DE, AT, FR, LU, BE, NL</td><td><strong style="color:#00EEFF;">€0 (包邮)</strong></td></tr>
+                            <tr><td>DK, IT, ES, PL, CZ, SK, HU, SI</td><td><strong>+ €30</strong></td></tr>
+                            <tr><td>SE, FI, IE, PT, GR, HR, RO, BG, LT, LV, EE</td><td><strong>+ €50</strong></td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-visual">
+                        <img src="/assets/images/Maxtron_image/Maxtron - smart20.png" alt="smart20">
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-title">Maxtron smart20</h2>
+                        <span class="product-model">MODEL: smart20</span>
+                        
+                        <div class="expanded-parameters">
+                            <h4>技术参数 (Specs)</h4>
+                            <div class="param-grid">
+                                <div class="param-item"><span>电池 (Battery)</span><strong>36V 5.2AH</strong></div>
+                                <div class="param-item"><span>电机 (Motor)</span><strong>250W</strong></div>
+                                <div class="param-item"><span>轮胎 (Tires)</span><strong>20" * 1.35"</strong></div>
+                                <div class="param-item"><span>变速器 (Gears)</span><strong>Shimano 7 速</strong></div>
+                                <div class="param-item"><span>前叉 (Suspension)</span><strong>铝合金普通前叉</strong></div>
+                                <div class="param-item"><span>最高时速 (Speed)</span><strong>25 km/h (欧规)</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="spec-secondary">
+                            <div class="spec-item">
+                                <h5>提供颜色 (Colors)</h5>
+                                <div class="color-options">
+                                    <div class="color-dot" style="background-color: #F5DEB3;" title="米色"></div>
+                                    <div class="color-dot" style="background-color: #800080;" title="紫色"></div>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <h5>辅助续航 (Range)</h5>
+                                <p><strong>30 - 40 km</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-section">
+                    <div class="data-table-wrapper">
+                        <h4>采购及结算价 (Pricing)</h4>
+                        <table class="data-table">
+                            <tr><th>价格类型</th><th>金额</th></tr>
+                            <tr><td>代发结算价</td><td><span class="highlight-price">€571.00</span> <span class="original-price">€601.00</span></td></tr>
+                        </table>
+                    </div>
+                    <div class="data-table-wrapper">
+                        <h4>欧洲区物流费用 (Logistics)</h4>
+                        <table class="data-table">
+                            <tr><th>发往区域</th><th>附加运费</th></tr>
+                            <tr><td>DE, AT, FR, LU, BE, NL</td><td><strong style="color:#00EEFF;">€0 (包邮)</strong></td></tr>
+                            <tr><td>DK, IT, ES, PL, CZ, SK, HU, SI</td><td><strong>+ €30</strong></td></tr>
+                            <tr><td>SE, FI, IE, PT, GR, HR, RO, BG, LT, LV, EE</td><td><strong>+ €50</strong></td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-visual">
+                        <img src="/assets/images/Maxtron_image/Maxtron - smart30.png" alt="smart30">
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-title">Maxtron smart30</h2>
+                        <span class="product-model">MODEL: smart30</span>
+                        
+                        <div class="expanded-parameters">
+                            <h4>技术参数 (Specs)</h4>
+                            <div class="param-grid">
+                                <div class="param-item"><span>电池 (Battery)</span><strong>36V 9.6AH</strong></div>
+                                <div class="param-item"><span>电机 (Motor)</span><strong>250W</strong></div>
+                                <div class="param-item"><span>轮胎 (Tires)</span><strong>20" * 2.125"</strong></div>
+                                <div class="param-item"><span>变速器 (Gears)</span><strong>无变速</strong></div>
+                                <div class="param-item"><span>前叉 (Suspension)</span><strong>铝合金普通前叉</strong></div>
+                                <div class="param-item"><span>最高时速 (Speed)</span><strong>25 km/h (欧规)</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="spec-secondary">
+                            <div class="spec-item">
+                                <h5>提供颜色 (Colors)</h5>
+                                <div class="color-options">
+                                    <div class="color-dot" style="background-color: #0A1128;" title="蓝黑色"></div>
+                                    <div class="color-dot" style="background-color: #B5B5B5;" title="金灰色"></div>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <h5>辅助续航 (Range)</h5>
+                                <p><strong>50 - 60 km</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-section">
+                    <div class="data-table-wrapper">
+                        <h4>采购及结算价 (Pricing)</h4>
+                        <table class="data-table">
+                            <tr><th>价格类型</th><th>金额</th></tr>
+                            <tr><td>代发结算价</td><td><span class="highlight-price">€724.00</span> <span class="original-price">€804.00</span></td></tr>
+                        </table>
+                    </div>
+                    <div class="data-table-wrapper">
+                        <h4>欧洲区物流费用 (Logistics)</h4>
+                        <table class="data-table">
+                            <tr><th>发往区域</th><th>附加运费</th></tr>
+                            <tr><td>DE, AT, FR, LU, BE, NL</td><td><strong style="color:#00EEFF;">€0 (包邮)</strong></td></tr>
+                            <tr><td>DK, IT, ES, PL, CZ, SK, HU, SI</td><td><strong>+ €30</strong></td></tr>
+                            <tr><td>SE, FI, IE, PT, GR, HR, RO, BG, LT, LV, EE</td><td><strong>+ €50</strong></td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-visual">
+                        <img src="/assets/images/Maxtron_image/Maxtron - urban 7.png" alt="urban 7">
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-title">Maxtron urban 7</h2>
+                        <span class="product-model">MODEL: urban 7</span>
+                        
+                        <div class="expanded-parameters">
+                            <h4>技术参数 (Specs)</h4>
+                            <div class="param-grid">
+                                <div class="param-item"><span>电池 (Battery)</span><strong>36V 12.8AH</strong></div>
+                                <div class="param-item"><span>电机 (Motor)</span><strong>250W</strong></div>
+                                <div class="param-item"><span>轮胎 (Tires)</span><strong>700C * 50C</strong></div>
+                                <div class="param-item"><span>变速器 (Gears)</span><strong>Shimano RD-M310</strong></div>
+                                <div class="param-item"><span>前叉 (Suspension)</span><strong>单肩铝肩铝腿避震前叉</strong></div>
+                                <div class="param-item"><span>最高时速 (Speed)</span><strong>25 km/h (欧规)</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="spec-secondary">
+                            <div class="spec-item">
+                                <h5>提供颜色 (Colors)</h5>
+                                <div class="color-options">
+                                    <div class="color-dot" style="background-color: #00008B;" title="深蓝色"></div>
+                                    <div class="color-dot" style="background-color: #F5DEB3;" title="米黄色"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-section">
+                    <div class="data-table-wrapper">
+                        <h4>采购及结算价 (Pricing)</h4>
+                        <table class="data-table">
+                            <tr><th>价格类型</th><th>金额</th></tr>
+                            <tr><td>代发结算价</td><td><span class="highlight-price">€546.00</span> <span class="original-price">€656.00</span></td></tr>
+                        </table>
+                    </div>
+                    <div class="data-table-wrapper">
+                        <h4>欧洲区物流费用 (Logistics)</h4>
+                        <table class="data-table">
+                            <tr><th>发往区域</th><th>附加运费</th></tr>
+                            <tr><td>DE, AT, FR, LU, BE, NL</td><td><strong style="color:#00EEFF;">€0 (包邮)</strong></td></tr>
+                            <tr><td>DK, IT, ES, PL, CZ, SK, HU, SI</td><td><strong>+ €30</strong></td></tr>
+                            <tr><td>SE, FI, IE, PT, GR, HR, RO, BG, LT, LV, EE</td><td><strong>+ €50</strong></td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-visual">
+                        <img src="/assets/images/Maxtron_image/Maxtron - mule.png" alt="mule">
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-title">Maxtron mule</h2>
+                        <span class="product-model">MODEL: mule</span>
+                        
+                        <div class="expanded-parameters">
+                            <h4>技术参数 (Specs)</h4>
+                            <div class="param-grid">
+                                <div class="param-item"><span>电池 (Battery)</span><strong>48V 20AH</strong></div>
+                                <div class="param-item"><span>电机 (Motor)</span><strong>350W</strong></div>
+                                <div class="param-item"><span>轮胎 (Tires)</span><strong>20 * 3.0</strong></div>
+                                <div class="param-item"><span>变速器 (Gears)</span><strong>7速</strong></div>
+                                <div class="param-item"><span>前叉 (Suspension)</span><strong>铁避震前叉</strong></div>
+                                <div class="param-item"><span>最高时速 (Speed)</span><strong>25 km/h (欧规)</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="spec-secondary">
+                            <div class="spec-item">
+                                <h5>提供颜色 (Colors)</h5>
+                                <div class="color-options">
+                                    <div class="color-dot" style="background-color: #FFFFFF;" title="亮光白"></div>
+                                    <div class="color-dot" style="background-color: #808080;" title="消光灰"></div>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <h5>辅助续航 (Range)</h5>
+                                <p><strong>70 km</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-section">
+                    <div class="data-table-wrapper">
+                        <h4>采购及结算价 (Pricing)</h4>
+                        <table class="data-table">
+                            <tr><th>价格类型</th><th>金额</th></tr>
+                            <tr><td>代发结算价</td><td><span class="highlight-price">€549.00</span> <span class="original-price">€629.00</span></td></tr>
+                        </table>
+                    </div>
+                    <div class="data-table-wrapper">
+                        <h4>欧洲区物流费用 (Logistics)</h4>
+                        <table class="data-table">
+                            <tr><th>发往区域</th><th>附加运费</th></tr>
+                            <tr><td>DE, AT, FR, LU, BE, NL</td><td><strong style="color:#00EEFF;">€0 (包邮)</strong></td></tr>
+                            <tr><td>DK, IT, ES, PL, CZ, SK, HU, SI</td><td><strong>+ €30</strong></td></tr>
+                            <tr><td>SE, FI, IE, PT, GR, HR, RO, BG, LT, LV, EE</td><td><strong>+ €50</strong></td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-visual">
+                        <img src="/assets/images/Maxtron_image/Maxtron - Marathon.png" alt="Marathon">
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-title">Maxtron Marathon</h2>
+                        <span class="product-model">MODEL: Marathon</span>
+                        
+                        <div class="expanded-parameters">
+                            <h4>技术参数 (Specs)</h4>
+                            <div class="param-grid">
+                                <div class="param-item"><span>电池 (Battery)</span><strong>36V * 22.5AH</strong></div>
+                                <div class="param-item"><span>电机 (Motor)</span><strong>250W</strong></div>
+                                <div class="param-item"><span>轮胎 (Tires)</span><strong>700C * 50C</strong></div>
+                                <div class="param-item"><span>变速器 (Gears)</span><strong>Shimano 7速</strong></div>
+                                <div class="param-item"><span>前叉 (Suspension)</span><strong>单肩铝肩铝腿带锁死</strong></div>
+                                <div class="param-item"><span>最高时速 (Speed)</span><strong>25 km/h (欧规)</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="spec-secondary">
+                            <div class="spec-item">
+                                <h5>提供颜色 (Colors)</h5>
+                                <div class="color-options">
+                                    <div class="color-dot" style="background-color: #800080;" title="紫色"></div>
+                                    <div class="color-dot" style="background-color: #2E8B57;" title="绿色"></div>
+                                    <div class="color-dot" style="background-color: #DAA520;" title="敛彩金"></div>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <h5>辅助续航 (Range)</h5>
+                                <p><strong>约 150 - 160 km</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-section">
+                    <div class="data-table-wrapper">
+                        <h4>采购及结算价 (Pricing)</h4>
+                        <table class="data-table">
+                            <tr><th>价格类型</th><th>金额</th></tr>
+                            <tr><td>代发结算价</td><td><span class="highlight-price">€765.00</span></td></tr>
+                        </table>
+                    </div>
+                    <div class="data-table-wrapper">
+                        <h4>欧洲区物流费用 (Logistics)</h4>
+                        <table class="data-table">
+                            <tr><th>发往区域</th><th>附加运费</th></tr>
+                            <tr><td>DE, AT, FR, LU, BE, NL</td><td><strong style="color:#00EEFF;">€0 (包邮)</strong></td></tr>
+                            <tr><td>DK, IT, ES, PL, CZ, SK, HU, SI</td><td><strong>+ €30</strong></td></tr>
+                            <tr><td>SE, FI, IE, PT, GR, HR, RO, BG, LT, LV, EE</td><td><strong>+ €50</strong></td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-visual">
+                        <img src="/assets/images/Maxtron_image/Maxtron - Polaris.png" alt="Polaris">
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-title">Maxtron Polaris</h2>
+                        <span class="product-model">MODEL: Polaris</span>
+                        
+                        <div class="expanded-parameters">
+                            <h4>技术参数 (Specs)</h4>
+                            <div class="param-grid">
+                                <div class="param-item"><span>电池 (Battery)</span><strong>48V 13AH</strong></div>
+                                <div class="param-item"><span>电机 (Motor)</span><strong>500W</strong></div>
+                                <div class="param-item"><span>轮胎 (Tires)</span><strong>20 * 4.0</strong></div>
+                                <div class="param-item"><span>变速器 (Gears)</span><strong>Shimano 7速</strong></div>
+                                <div class="param-item"><span>前叉 (Suspension)</span><strong>单肩铝肩铁腿避震前叉</strong></div>
+                                <div class="param-item"><span>最高时速 (Speed)</span><strong>25 km/h</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="spec-secondary">
+                            <div class="spec-item">
+                                <h5>提供颜色 (Colors)</h5>
+                                <div class="color-options">
+                                    <div class="color-dot" style="background-color: #111;" title="黑色"></div>
+                                    <div class="color-dot" style="background-color: #808080;" title="灰色"></div>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <h5>辅助续航 (Range)</h5>
+                                <p><strong>约 45 km</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-section">
+                    <div class="data-table-wrapper">
+                        <h4>采购及结算价 (Pricing)</h4>
+                        <table class="data-table">
+                            <tr><th>价格类型</th><th>金额</th></tr>
+                            <tr><td>代发结算价</td><td><span class="highlight-price">€588.00</span></td></tr>
+                        </table>
+                    </div>
+                    <div class="data-table-wrapper">
+                        <h4>欧洲区物流费用 (Logistics)</h4>
+                        <table class="data-table">
+                            <tr><th>发往区域</th><th>附加运费</th></tr>
+                            <tr><td>DE, AT, FR, LU, BE, NL</td><td><strong style="color:#00EEFF;">€0 (包邮)</strong></td></tr>
+                            <tr><td>DK, IT, ES, PL, CZ, SK, HU, SI</td><td><strong>+ €30</strong></td></tr>
+                            <tr><td>SE, FI, IE, PT, GR, HR, RO, BG, LT, LV, EE</td><td><strong>+ €50</strong></td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+</body>
+</html>
